@@ -1,0 +1,23 @@
+strong{
+    color: black;
+}
+.details{
+    width: 100%;
+}
+.item-details{
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.item-content{
+    text-align: left;
+}
+#price{
+    font-size: large;
+    font-weight: bold;
+    color: red;
+}
+.list-book-synonym{
+  margin-top: 20px;
+}

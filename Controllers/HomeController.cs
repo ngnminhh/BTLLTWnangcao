@@ -32,6 +32,12 @@ namespace QLTV.Controllers
             ViewData["Title"] = "Chi tiết sản phẩm";
             return View();
         }
+        [Route("danhmuc")]
+        public IActionResult Category()
+        {
+            ViewData["Title"] = "Danh mục sách";
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -7,6 +7,9 @@
 .navbar *{
     color: white !important;
 }
+.navbar input{
+    color: black !important;
+}
 .search-area{
     width: 100%;
     display: flex;
@@ -30,7 +33,6 @@
 .sidebar {
     border: 1px solid;
     padding: 10px;
-    box-shadow: 2px 5px hsl(0, 0%, 53%);
     border-radius: 5px;
     min-width: 200px;
     max-height: fit-content;
@@ -65,7 +67,7 @@
     margin-top: 20px;
     width: 100%;
 }
-.title-list{
+.title-list {
     display: flex;
     padding-left: 10px;
     border-left: 3px solid #1b6ec2;
@@ -74,12 +76,18 @@
 }
 .list-book-items{
     display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
 }
-.box-item{
+.box-item {
     min-width: 220px;
     width: 230px;
     max-width: 250px;
     padding: 10px;
+    /* border: 1px rgb(167, 167, 167) solid; */
+}
+.box-item :hover{
+    opacity: 0.85;
 }
 .detail-book *{
     margin: 0;
@@ -99,13 +107,13 @@
         flex-wrap: wrap;
         justify-content: space-between;
     }
-    .box-item{
+    .box-item {
         min-width: 120px;
         width: 165px;
         max-width: 200px;
         padding: 10px;
     }
-    .box-item *{
+    .box-item  *{
         font-size: small;
     }
     .img-book img{

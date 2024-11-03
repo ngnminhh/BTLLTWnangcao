@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/homepage.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/details.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/category.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/cart.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/fontawesome/css/all.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/QLTV.styles.css" asp-append-version="true" />
 </head>
@@ -25,7 +28,7 @@
                     <ul class="navbar-nav flex-grow-1" style="min-width: 100px;">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                asp-action="Cart">Giỏ hàng</a>
+                                asp-action="Cart">Sách Mượn</a>
                         </li>
                     </ul>
                     <div class="search-area">
@@ -50,11 +53,11 @@
         <main role="main" class="pb-3">
             <div class="text-center">
                 <div class="mainpage">
-                    <div class="sidebar">
+                    <div class="sidebar  shadow p-3 mb-5 bg-white rounded">
                         <div class="list-group">
                             <h5 class="text-center active"
                                 style="background-color: #007cd5;color:white;padding:10px;margin:0">DANH MỤC</h5>
-                            <a href="#" class="list-group-item list-group-item-action">
+                            <a href="./danhmuc" class="list-group-item list-group-item-action">
                                 Sách mới
                             </a>
                             <a href="#" class="list-group-item list-group-item-action">Sách điện tử</a>
@@ -79,7 +82,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - QLTV - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - QLTV - Nhóm 5
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

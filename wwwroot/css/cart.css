@@ -1,0 +1,12 @@
+.main-cart{
+    width: 100%;
+}
+.main-cart *{
+    vertical-align: middle;
+}
+.is_pre_date{
+    color: rgb(0, 168, 0);
+}
+.is_out_date{
+    color: red;
+}
