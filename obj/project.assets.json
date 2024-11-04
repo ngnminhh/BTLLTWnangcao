@@ -13,19 +13,22 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Webnc\\BTL_WEBNC\\QLTV.csproj",
+      "projectUniqueName": "D:\\asp core mvc\\BTL_WEBNC\\QLTV.csproj",
       "projectName": "QLTV",
-      "projectPath": "D:\\Webnc\\BTL_WEBNC\\QLTV.csproj",
+      "projectPath": "D:\\asp core mvc\\BTL_WEBNC\\QLTV.csproj",
       "packagesPath": "C:\\Users\\daiko\\.nuget\\packages\\",
-      "outputPath": "D:\\Webnc\\BTL_WEBNC\\obj\\",
+      "outputPath": "D:\\asp core mvc\\BTL_WEBNC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\daiko\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\daiko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -38,6 +41,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -62,7 +70,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.427\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
