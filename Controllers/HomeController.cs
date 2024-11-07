@@ -48,7 +48,32 @@ namespace QLTV.Controllers
         {
             ViewData["DanhMuc"] = context.TblDanhMucs?.ToList();
             ViewData["Title"] = "Chi tiết sản phẩm";
-            return View();
+
+            var item = context.TblSaches.Find(id);
+            if (item == null)
+            {
+                return RedirectToAction("Index","Home");
+            }
+            var lstSachTheoDM = (
+                    from b in context.TblSaches
+                    join c in context.TblDanhMucs
+                    on b.SMaDanhMuc equals c.SMaDanhMuc
+                    where c.SMaDanhMuc==item.SMaDanhMuc
+                    select new
+                    {
+                        TenSachChon=item.STenSach,
+                        TacGiaChon=item.STenTacGia,
+                        NXBChon=item.SNhaXuatBan,
+                        TrangThaiChon=item.STrangThai,
+                        GiaTienChon=item.FGiaTien,
+                        DuongDanChon=item.SDuongDan,
+                        SanPhamLienQuan = context.TblSaches
+                               .Where(p => p.SMaDanhMuc == c.SMaDanhMuc)
+                               .Select(p => new { p.SMaSach, p.STenSach, p.STenTacGia, p.SNhaXuatBan, p.ISoLuong, p.STrangThai, p.FGiaTien, p.SMaDanhMuc, p.SDuongDan })
+                               .OrderBy(x=>Guid.NewGuid()).Take(4).ToList()
+                    }
+                ).Take(1).ToList();
+            return View(lstSachTheoDM);
         }
         [Route("danhmuc")]
         public IActionResult Category(string id)
