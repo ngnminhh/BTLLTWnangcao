@@ -1,191 +1,81 @@
+@model IEnumerable<dynamic>
+@{
+    int i = 0;
+}
 <div class="main-category">
-    <h3>Danh mục: <a href="">Sách mới</a></h3>
-    <div class="list-category-book">
-        <div class="list-book-items">
-            <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                <a href="">
-                    <div class="img-book">
-                        <img src="~/images/comic-book1.jpg" alt="">
-                    </div>
-                </a>
-                <div class="detail-book">
-                    <h5>AVENGERS ANNUAL</h5>
-                    <p>Tác giả: Savaldor Larroca</p>
-                    <p>Nhà xuất bản: Kim Đồng</p>
-                    <p>Số lượng: 18</p>
-                    <p>Trạng thái: <b>Còn sách</b></p>
-                    <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                </div>
+    @if (Model.Count() < 1)
+    {
+        <h3>Xin lỗi, hiện chưa có sách nào thuộc danh mục!!!</h3>
+    }
+    else
+    {
+        @foreach (var list in Model)
+        {
+            <div class="list-category-book">
+                <h3>Danh mục: <a href="./danhmuc?id=@list.MaDanhMuc">@list.TenDanhMuc</a></h3>
+                @foreach (var item in list.SanPham)
+                {
+                    { i += 1; }
+
+                    if (i == 1)
+                    {
+                        @Html.Raw("<div class='list-book-items category'>")
+                        <div class="box-item shadow p-3 mb-5 bg-white rounded">
+                            <a href="">
+                                <div class="img-book">
+                                    <img src="~/images/@item.SDuongDan" alt="">
+                                </div>
+                            </a>
+                            <div class="detail-book">
+                                <h5>@item.STenSach</h5>
+                                <p>Tác giả: @item.STenTacGia</p>
+                                <p>Nhà xuất bản: @item.SNhaXuatBan</p>
+                                <p>Số lượng: @item.ISoLuong</p>
+                                <p>Trạng thái: <b>@item.STrangThai</b></p>
+                                <p>Giá mượn: <strong>@item.FGiaTien VNĐ</strong></p>
+                            </div>
+                        </div>
+                    }
+                    if (i != 4 && i != 1)
+                    {
+                        <div class="box-item shadow p-3 mb-5 bg-white rounded">
+                            <a href="">
+                                <div class="img-book">
+                                    <img src="~/images/@item.SDuongDan" alt="">
+                                </div>
+                            </a>
+                            <div class="detail-book">
+                                <h5>@item.STenSach</h5>
+                                <p>Tác giả: @item.STenTacGia</p>
+                                <p>Nhà xuất bản: @item.SNhaXuatBan</p>
+                                <p>Số lượng: @item.ISoLuong</p>
+                                <p>Trạng thái: <b>@item.STrangThai</b></p>
+                                <p>Giá mượn: <strong>@item.FGiaTien VNĐ</strong></p>
+                            </div>
+                        </div>
+                    }
+                    if (i == 4)
+                    {
+                        <div class="box-item shadow p-3 mb-5 bg-white rounded">
+                            <a href="">
+                                <div class="img-book">
+                                    <img src="~/images/@item.SDuongDan" alt="">
+                                </div>
+                            </a>
+                            <div class="detail-book">
+                                <h5>@item.STenSach</h5>
+                                <p>Tác giả: @item.STenTacGia</p>
+                                <p>Nhà xuất bản: @item.SNhaXuatBan</p>
+                                <p>Số lượng: @item.ISoLuong</p>
+                                <p>Trạng thái: <b>@item.STrangThai</b></p>
+                                <p>Giá mượn: <strong>@item.FGiaTien VNĐ</strong></p>
+                            </div>
+                        </div>
+                        @Html.Raw("</div>")
+                        { i = 0; }
+                    }
+                }
             </div>
-            <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                <a href="">
-                    <div class="img-book">
-                        <img src="~/images/comic-book1.jpg" alt="">
-                    </div>
-                </a>
-                <div class="detail-book">
-                    <h5>AVENGERS ANNUAL</h5>
-                    <p>Tác giả: Savaldor Larroca</p>
-                    <p>Nhà xuất bản: Kim Đồng</p>
-                    <p>Số lượng: 18</p>
-                    <p>Trạng thái: <b>Còn sách</b></p>
-                    <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                </div>
-            </div>
-            <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                <a href="">
-                    <div class="img-book">
-                        <img src="~/images/comic-book1.jpg" alt="">
-                    </div>
-                </a>
-                <div class="detail-book">
-                    <h5>AVENGERS ANNUAL</h5>
-                    <p>Tác giả: Savaldor Larroca</p>
-                    <p>Nhà xuất bản: Kim Đồng</p>
-                    <p>Số lượng: 18</p>
-                    <p>Trạng thái: <b>Còn sách</b></p>
-                    <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                </div>
-            </div>
-            <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                <a href="">
-                    <div class="img-book">
-                        <img src="~/images/comic-book1.jpg" alt="">
-                    </div>
-                </a>
-                <div class="detail-book">
-                    <h5>AVENGERS ANNUAL</h5>
-                    <p>Tác giả: Savaldor Larroca</p>
-                    <p>Nhà xuất bản: Kim Đồng</p>
-                    <p>Số lượng: 18</p>
-                    <p>Trạng thái: <b>Còn sách</b></p>
-                    <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                </div>
-            </div>
-        </div>
-        <div class="list-book-items">
-            <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                <a href="">
-                    <div class="img-book">
-                        <img src="~/images/comic-book1.jpg" alt="">
-                    </div>
-                </a>
-                <div class="detail-book">
-                    <h5>AVENGERS ANNUAL</h5>
-                    <p>Tác giả: Savaldor Larroca</p>
-                    <p>Nhà xuất bản: Kim Đồng</p>
-                    <p>Số lượng: 18</p>
-                    <p>Trạng thái: <b>Còn sách</b></p>
-                    <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                </div>
-            </div>
-            <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                <a href="">
-                    <div class="img-book">
-                        <img src="~/images/comic-book1.jpg" alt="">
-                    </div>
-                </a>
-                <div class="detail-book">
-                    <h5>AVENGERS ANNUAL</h5>
-                    <p>Tác giả: Savaldor Larroca</p>
-                    <p>Nhà xuất bản: Kim Đồng</p>
-                    <p>Số lượng: 18</p>
-                    <p>Trạng thái: <b>Còn sách</b></p>
-                    <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                </div>
-            </div>
-            <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                <a href="">
-                    <div class="img-book">
-                        <img src="~/images/comic-book1.jpg" alt="">
-                    </div>
-                </a>
-                <div class="detail-book">
-                    <h5>AVENGERS ANNUAL</h5>
-                    <p>Tác giả: Savaldor Larroca</p>
-                    <p>Nhà xuất bản: Kim Đồng</p>
-                    <p>Số lượng: 18</p>
-                    <p>Trạng thái: <b>Còn sách</b></p>
-                    <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                </div>
-            </div>
-            <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                <a href="">
-                    <div class="img-book">
-                        <img src="~/images/comic-book1.jpg" alt="">
-                    </div>
-                </a>
-                <div class="detail-book">
-                    <h5>AVENGERS ANNUAL</h5>
-                    <p>Tác giả: Savaldor Larroca</p>
-                    <p>Nhà xuất bản: Kim Đồng</p>
-                    <p>Số lượng: 18</p>
-                    <p>Trạng thái: <b>Còn sách</b></p>
-                    <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                </div>
-            </div>
-        </div>
-        <div class="list-book-items">
-            <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                <a href="">
-                    <div class="img-book">
-                        <img src="~/images/comic-book1.jpg" alt="">
-                    </div>
-                </a>
-                <div class="detail-book">
-                    <h5>AVENGERS ANNUAL</h5>
-                    <p>Tác giả: Savaldor Larroca</p>
-                    <p>Nhà xuất bản: Kim Đồng</p>
-                    <p>Số lượng: 18</p>
-                    <p>Trạng thái: <b>Còn sách</b></p>
-                    <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                </div>
-            </div>
-            <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                <a href="">
-                    <div class="img-book">
-                        <img src="~/images/comic-book1.jpg" alt="">
-                    </div>
-                </a>
-                <div class="detail-book">
-                    <h5>AVENGERS ANNUAL</h5>
-                    <p>Tác giả: Savaldor Larroca</p>
-                    <p>Nhà xuất bản: Kim Đồng</p>
-                    <p>Số lượng: 18</p>
-                    <p>Trạng thái: <b>Còn sách</b></p>
-                    <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                </div>
-            </div>
-            <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                <a href="">
-                    <div class="img-book">
-                        <img src="~/images/comic-book1.jpg" alt="">
-                    </div>
-                </a>
-                <div class="detail-book">
-                    <h5>AVENGERS ANNUAL</h5>
-                    <p>Tác giả: Savaldor Larroca</p>
-                    <p>Nhà xuất bản: Kim Đồng</p>
-                    <p>Số lượng: 18</p>
-                    <p>Trạng thái: <b>Còn sách</b></p>
-                    <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                </div>
-            </div>
-            <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                <a href="">
-                    <div class="img-book">
-                        <img src="~/images/comic-book1.jpg" alt="">
-                    </div>
-                </a>
-                <div class="detail-book">
-                    <h5>AVENGERS ANNUAL</h5>
-                    <p>Tác giả: Savaldor Larroca</p>
-                    <p>Nhà xuất bản: Kim Đồng</p>
-                    <p>Số lượng: 18</p>
-                    <p>Trạng thái: <b>Còn sách</b></p>
-                    <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                </div>
-            </div>
-        </div>
-    </div>
+        }
+    }
 </div>

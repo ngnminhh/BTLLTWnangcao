@@ -30,7 +30,7 @@ namespace QLTV.Controllers
                                .Select(p => new { p.SMaSach, p.STenSach, p.STenTacGia, p.SNhaXuatBan, p.ISoLuong, p.STrangThai, p.FGiaTien, p.SMaDanhMuc, p.SDuongDan })
                                .Take(4)
                                .ToList()
-            }).ToList();
+            }).Take(3).ToList();
             //List<object> resultList = result.Cast<object>().ToList();
 
             return View(result);
@@ -70,7 +70,7 @@ namespace QLTV.Controllers
                                .Select(p => new { p.SMaSach, p.STenSach, p.STenTacGia, p.SNhaXuatBan, p.ISoLuong, p.STrangThai, p.FGiaTien, p.SMaDanhMuc, p.SDuongDan })
                                .ToList()
                     }
-                );
+                ).Take(1).ToList();
             return View(lstSachTheoDM);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

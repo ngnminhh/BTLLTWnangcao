@@ -1,3 +1,6 @@
 .main-category{
     width: 100%;
 }
+.category{
+    justify-content:flex-start;
+}
