@@ -57,13 +57,16 @@
                         <div class="list-group">
                             <h5 class="text-center active"
                                 style="background-color: #007cd5;color:white;padding:10px;margin:0">DANH MỤC</h5>
-                            <a href="./danhmuc" class="list-group-item list-group-item-action">
-                                Sách mới
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">Sách điện tử</a>
-                            <a href="#" class="list-group-item list-group-item-action">Truyện hoạt hình</a>
-                            <a href="#" class="list-group-item list-group-item-action">Báo tạp chí, bản đồ</a>
-                            <a href="#" class="list-group-item list-group-item-action">Sách miễn phí</a>
+                            @if (ViewData["DanhMuc"] != null)
+                            {
+                                var danhmuc = (IEnumerable<dynamic>)ViewData["DanhMuc"];
+                                foreach (var item in danhmuc)
+                                {
+                                    <a href="./danhmuc?id=@item.SMaDanhMuc" class="list-group-item list-group-item-action">
+                                        @item.STenDanhMuc
+                                    </a>
+                                }
+                            }
                         </div>
                         <div class="list-group utilites">
                             <h5 class="text-center" style="background-color: #007cd5;color:white;padding:10px;margin:0">

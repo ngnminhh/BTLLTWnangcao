@@ -8601,12 +8601,32 @@
       "PackagePath": "staticwebassets\\images\\1.gif"
     },
     {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\1357.jpg",
+      "PackagePath": "staticwebassets\\images\\1357.jpg"
+    },
+    {
       "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\2.gif",
       "PackagePath": "staticwebassets\\images\\2.gif"
     },
     {
       "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\3.gif",
       "PackagePath": "staticwebassets\\images\\3.gif"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\4ae9cbf4aef9a5be28a48dc8d72b9da1.jpg",
+      "PackagePath": "staticwebassets\\images\\4ae9cbf4aef9a5be28a48dc8d72b9da1.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\69068_image.png",
+      "PackagePath": "staticwebassets\\images\\69068_image.png"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\81nKBuQzyjL.jpg",
+      "PackagePath": "staticwebassets\\images\\81nKBuQzyjL.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\a784104752c0f8664cfb3f303189d3dc.jfif",
+      "PackagePath": "staticwebassets\\images\\a784104752c0f8664cfb3f303189d3dc.jfif"
     },
     {
       "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\book1.jfif",
@@ -8621,8 +8641,20 @@
       "PackagePath": "staticwebassets\\images\\bullet-normal.gif"
     },
     {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\chuc-mot-ngay-tot-lanh-ebook-pdf.jpg",
+      "PackagePath": "staticwebassets\\images\\chuc-mot-ngay-tot-lanh-ebook-pdf.jpg"
+    },
+    {
       "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\comic-book1.jpg",
       "PackagePath": "staticwebassets\\images\\comic-book1.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\day-con-lam-giau-cha-giau-cha-ngheo.jpg",
+      "PackagePath": "staticwebassets\\images\\day-con-lam-giau-cha-giau-cha-ngheo.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\doraemon.jpg",
+      "PackagePath": "staticwebassets\\images\\doraemon.jpg"
     },
     {
       "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\dotline2.gif",
@@ -8637,12 +8669,88 @@
       "PackagePath": "staticwebassets\\images\\image1.jpg"
     },
     {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\images.jfif",
+      "PackagePath": "staticwebassets\\images\\images.jfif"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\images234.jfif",
+      "PackagePath": "staticwebassets\\images\\images234.jfif"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\images3424.jfif",
+      "PackagePath": "staticwebassets\\images\\images3424.jfif"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\images903458.jfif",
+      "PackagePath": "staticwebassets\\images\\images903458.jfif"
+    },
+    {
       "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\logo.gif",
       "PackagePath": "staticwebassets\\images\\logo.gif"
     },
     {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\lovebook-bo-de-tinh-tuy-on-thi-thpt-quoc-gia-mon-hoa-pdf.jpg",
+      "PackagePath": "staticwebassets\\images\\lovebook-bo-de-tinh-tuy-on-thi-thpt-quoc-gia-mon-hoa-pdf.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\marketing-du-kich-trong-30-ngay-ebook-pdf.jpg",
+      "PackagePath": "staticwebassets\\images\\marketing-du-kich-trong-30-ngay-ebook-pdf.jpg"
+    },
+    {
       "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\megazine1.jpg",
       "PackagePath": "staticwebassets\\images\\megazine1.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\megazine10.jpg",
+      "PackagePath": "staticwebassets\\images\\megazine10.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\megazine11.jpg",
+      "PackagePath": "staticwebassets\\images\\megazine11.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\megazine2.jfif",
+      "PackagePath": "staticwebassets\\images\\megazine2.jfif"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\megazine3.jpg",
+      "PackagePath": "staticwebassets\\images\\megazine3.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\megazine4.jpg",
+      "PackagePath": "staticwebassets\\images\\megazine4.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\megazine5.jpg",
+      "PackagePath": "staticwebassets\\images\\megazine5.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\megazine6.jpg",
+      "PackagePath": "staticwebassets\\images\\megazine6.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\megazine7.jpg",
+      "PackagePath": "staticwebassets\\images\\megazine7.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\megazine8.jpg",
+      "PackagePath": "staticwebassets\\images\\megazine8.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\megazine9.jpg",
+      "PackagePath": "staticwebassets\\images\\megazine9.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\nha-gia-kim-ebook.jpg",
+      "PackagePath": "staticwebassets\\images\\nha-gia-kim-ebook.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\nhung-dieu-truong-harvard-thuc-su-day-ban-ebook.jpg",
+      "PackagePath": "staticwebassets\\images\\nhung-dieu-truong-harvard-thuc-su-day-ban-ebook.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\phat-huy-ky-thuat-dat-truc-giai-nhanh-hinh-hoc-khong-gian-tu-a-den-z-megabook.jpg",
+      "PackagePath": "staticwebassets\\images\\phat-huy-ky-thuat-dat-truc-giai-nhanh-hinh-hoc-khong-gian-tu-a-den-z-megabook.jpg"
     },
     {
       "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\premium_photo-1677567996070-68fa4181775a.jfif",
@@ -8653,12 +8761,32 @@
       "PackagePath": "staticwebassets\\images\\premium_photo-1683120731413-b3aa991cb64e.jfif"
     },
     {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\sherlock-holmes-toan-tap-ebook-pdf.jpg",
+      "PackagePath": "staticwebassets\\images\\sherlock-holmes-toan-tap-ebook-pdf.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\tieu-ngao-giang-ho-pdf.jpg",
+      "PackagePath": "staticwebassets\\images\\tieu-ngao-giang-ho-pdf.jpg"
+    },
+    {
       "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\topbg.gif",
       "PackagePath": "staticwebassets\\images\\topbg.gif"
     },
     {
       "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\topheading-dottedline.gif",
       "PackagePath": "staticwebassets\\images\\topheading-dottedline.gif"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\y-thien-do-long-ky-pdf.jpg",
+      "PackagePath": "staticwebassets\\images\\y-thien-do-long-ky-pdf.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\images\\y0mjq4ju1bpjs.jpg",
+      "PackagePath": "staticwebassets\\images\\y0mjq4ju1bpjs.jpg"
+    },
+    {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\js\\booksmanage.js",
+      "PackagePath": "staticwebassets\\js\\booksmanage.js"
     },
     {
       "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\js\\site.js",

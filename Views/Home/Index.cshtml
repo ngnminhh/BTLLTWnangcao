@@ -1,220 +1,42 @@
-﻿@{
-    
+﻿@model IEnumerable<dynamic>
+@{
+
 }
 <div class="list-book">
     <div class="banner">
         <img src="~/images/premium_photo-1683120731413-b3aa991cb64e.jfif" alt="">
     </div>
     <div class="item-detail">
-        <div class="row-list-books new-books">
-            <div class="title-list shadow p-3 mb-5 bg-white rounded">
-                <h4>Sách Mới</h4>
-                <a href="" class="btn btn-primary">
-                    Xem thêm
-                </a>
-            </div>
-            <div class="list-book-items">
-                <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                    <a href="./itemdetail">
-                        <div class="img-book">
-                            <img src="~/images/book1.jfif" alt="">
-                        </div>
+        @foreach (var list in Model)
+        {
+            <div class="row-list-books new-books">
+                <div class="title-list shadow p-3 mb-5 bg-white rounded">
+                    <h4>@list.TenDanhMuc</h4>
+                    <a href="./danhmuc?id=@list.MaDanhMuc" class="btn btn-primary">
+                        Xem thêm
                     </a>
-                    <div class="detail-book">
-                        <h5>Tư duy ngược đáng sợ như nào?</h5>
-                        <p>Tác giả: Nguyễn Anh Dũng</p>
-                        <p>Nhà xuất bản: Kim Đồng</p>
-                        <p>Số lượng: 10</p>
-                        <p>Trạng thái: <b>Còn sách</b></p>
-                        <p>Giá mượn: <strong>104.000 VNĐ</strong></p>
-                    </div>
                 </div>
-                <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                    <a href="">
-                        <div class="img-book">
-                            <img src="~/images/book1.jfif" alt="">
+                <div class="list-book-items">
+                    @foreach (var item in list.SanPham)
+                    {
+                        <div class="box-item shadow p-3 mb-5 bg-white rounded">
+                            <a href="./itemdetail?id=@item.SMaSach">
+                                <div class="img-book">
+                                    <img src="~/images/@item.SDuongDan" alt="">
+                                </div>
+                            </a>
+                            <div class="detail-book">
+                                <h5>@item.STenSach</h5>
+                                <p>Tác giả: @item.STenTacGia</p>
+                                <p>Nhà xuất bản: @item.SNhaXuatBan</p>
+                                <p>Số lượng: @item.ISoLuong</p>
+                                <p>Trạng thái: <b>@item.STrangThai</b></p>
+                                <p>Giá mượn: <strong>@item.FGiaTien</strong></p>
+                            </div>
                         </div>
-                    </a>
-                    <div class="detail-book">
-                        <h5>Tư duy ngược đáng sợ như nào?</h5>
-                        <p>Tác giả: Nguyễn Anh Dũng</p>
-                        <p>Nhà xuất bản: Kim Đồng</p>
-                        <p>Số lượng: 10</p>
-                        <p>Trạng thái: <b>Còn sách</b></p>
-                        <p>Giá mượn: <strong>104.000 VNĐ</strong></p>
-                    </div>
-                </div>
-                <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                    <a href="">
-                        <div class="img-book">
-                            <img src="~/images/book1.jfif" alt="">
-                        </div>
-                    </a>
-                    <div class="detail-book">
-                        <h5>Tư duy ngược đáng sợ như nào?</h5>
-                        <p>Tác giả: Nguyễn Anh Dũng</p>
-                        <p>Nhà xuất bản: Kim Đồng</p>
-                        <p>Số lượng: 10</p>
-                        <p>Trạng thái: <b>Còn sách</b></p>
-                        <p>Giá mượn: <strong>104.000 VNĐ</strong></p>
-                    </div>
-                </div>
-                <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                    <a href="">
-                        <div class="img-book">
-                            <img src="~/images/book1.jfif" alt="">
-                        </div>
-                    </a>
-                    <div class="detail-book">
-                        <h5>Tư duy ngược đáng sợ như nào?</h5>
-                        <p>Tác giả: Nguyễn Anh Dũng</p>
-                        <p>Nhà xuất bản: Kim Đồng</p>
-                        <p>Số lượng: 10</p>
-                        <p>Trạng thái: <b>Còn sách</b></p>
-                        <p>Giá mượn: <strong>104.000 VNĐ</strong></p>
-                    </div>
+                    }
                 </div>
             </div>
-        </div>
-        <div class="row-list-books megazines">
-            <div class="title-list shadow p-3 mb-5 bg-white rounded">
-                <h4>Tạp Chí, Bản Đồ</h4>
-                <a href="" class="btn btn-primary">
-                    Xem thêm
-                </a>
-            </div>
-            <div class="list-book-items">
-                <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                    <a href="">
-                        <div class="img-book">
-                            <img src="~/images/megazine1.jpg" alt="">
-                        </div>
-                    </a>
-                    <div class="detail-book">
-                        <h5>Sơn Tùng MTP - THE ICON ISSUE</h5>
-                        <p>Tác giả: Phạm Linh</p>
-                        <p>Nhà xuất bản: Tạp chí Organ</p>
-                        <p>Số lượng: 25</p>
-                        <p>Trạng thái: <b>Còn hàng</b></p>
-                        <p>Giá mượn: <strong>78.000 VNĐ</strong></p>
-                    </div>
-                </div>
-                <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                    <a href="">
-                        <div class="img-book">
-                            <img src="~/images/megazine1.jpg" alt="">
-                        </div>
-                    </a>
-                    <div class="detail-book">
-                        <h5>Sơn Tùng MTP - THE ICON ISSUE</h5>
-                        <p>Tác giả: Phạm Linh</p>
-                        <p>Nhà xuất bản: Tạp chí Organ</p>
-                        <p>Số lượng: 25</p>
-                        <p>Trạng thái: <b>Còn hàng</b></p>
-                        <p>Giá mượn: <strong>78.000 VNĐ</strong></p>
-                    </div>
-                </div>
-                <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                    <a href="">
-                        <div class="img-book">
-                            <img src="~/images/megazine1.jpg" alt="">
-                        </div>
-                    </a>
-                    <div class="detail-book">
-                        <h5>Sơn Tùng MTP - THE ICON ISSUE</h5>
-                        <p>Tác giả: Phạm Linh</p>
-                        <p>Nhà xuất bản: Tạp chí Organ</p>
-                        <p>Số lượng: 25</p>
-                        <p>Trạng thái: <b>Còn hàng</b></p>
-                        <p>Giá mượn: <strong>78.000 VNĐ</strong></p>
-                    </div>
-                </div>
-                <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                    <a href="">
-                        <div class="img-book">
-                            <img src="~/images/megazine1.jpg" alt="">
-                        </div>
-                    </a>
-                    <div class="detail-book">
-                        <h5>Sơn Tùng MTP - THE ICON ISSUE</h5>
-                        <p>Tác giả: Phạm Linh</p>
-                        <p>Nhà xuất bản: Tạp chí Organ</p>
-                        <p>Số lượng: 25</p>
-                        <p>Trạng thái: <b>Còn hàng</b></p>
-                        <p>Giá mượn: <strong>78.000 VNĐ</strong></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row-list-books comic-books">
-            <div class="title-list shadow p-3 mb-5 bg-white rounded">
-                <h4>Truyện Tranh</h4>
-                <a href="" class="btn btn-primary">
-                    Xem thêm
-                </a>
-            </div>
-            <div class="list-book-items">
-                <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                    <a href="">
-                        <div class="img-book">
-                            <img src="~/images/comic-book1.jpg" alt="">
-                        </div>
-                    </a>
-                    <div class="detail-book">
-                        <h5>AVENGERS ANNUAL</h5>
-                        <p>Tác giả: Savaldor Larroca</p>
-                        <p>Nhà xuất bản: Kim Đồng</p>
-                        <p>Số lượng: 18</p>
-                        <p>Trạng thái: <b>Còn sách</b></p>
-                        <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                    </div>
-                </div>
-                <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                    <a href="">
-                        <div class="img-book">
-                            <img src="~/images/comic-book1.jpg" alt="">
-                        </div>
-                    </a>
-                    <div class="detail-book">
-                        <h5>AVENGERS ANNUAL</h5>
-                        <p>Tác giả: Savaldor Larroca</p>
-                        <p>Nhà xuất bản: Kim Đồng</p>
-                        <p>Số lượng: 18</p>
-                        <p>Trạng thái: <b>Còn sách</b></p>
-                        <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                    </div>
-                </div>
-                <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                    <a href="">
-                        <div class="img-book">
-                            <img src="~/images/comic-book1.jpg" alt="">
-                        </div>
-                    </a>
-                    <div class="detail-book">
-                        <h5>AVENGERS ANNUAL</h5>
-                        <p>Tác giả: Savaldor Larroca</p>
-                        <p>Nhà xuất bản: Kim Đồng</p>
-                        <p>Số lượng: 18</p>
-                        <p>Trạng thái: <b>Còn sách</b></p>
-                        <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                    </div>
-                </div>
-                <div class="box-item shadow p-3 mb-5 bg-white rounded">
-                    <a href="">
-                        <div class="img-book">
-                            <img src="~/images/comic-book1.jpg" alt="">
-                        </div>
-                    </a>
-                    <div class="detail-book">
-                        <h5>AVENGERS ANNUAL</h5>
-                        <p>Tác giả: Savaldor Larroca</p>
-                        <p>Nhà xuất bản: Kim Đồng</p>
-                        <p>Số lượng: 18</p>
-                        <p>Trạng thái: <b>Còn sách</b></p>
-                        <p>Giá mượn: <strong>165.000 VNĐ</strong></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        }
     </div>
 </div>
