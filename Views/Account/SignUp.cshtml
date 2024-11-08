@@ -1,3 +1,4 @@
+@model DtoSignup
 @{
     Layout = null;
 }
@@ -13,6 +14,19 @@
 </head>
 
 <body>
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
     <div id="mainContainer">
         <div class="">
             <div class="row align-items-center">
@@ -23,31 +37,36 @@
                     <div class="p-4 centerOnMobile">
                         <div class="formContainer">
                             <h2 class="p-2 h4 text-center"><i class="fas fa-lock me-2"></i> Đăng ký</h2>
-                            <form action="#">
+                            <form asp-action="SignUp" asp-controller="Account" method="post" enctype="multipart/form-data">
                                 <div class="form-floating my-3">
-                                    <input type="email" class="form-control" id="floatingInput"
+                                    <input type="email" class="form-control" asp-for="STaiKhoan" id="floatingInput"
                                         placeholder="name@example.com">
                                     <label for="floatingInput">Địa chỉ Email</label>
+                                    <span asp-validation-for="STaiKhoan" class="text-danger"></span>
                                 </div>
                                 <div class="form-floating my-3">
                                     <input type="text" class="form-control" id="floatingCCCD"
-                                        placeholder="name@example.com">
+                                           placeholder="name@example.com" asp-for="SCccd">
                                     <label for="floatingCCCD">Căn cước công dân</label>
+                                    <span asp-validation-for="SCccd" class="text-danger"></span>
                                 </div>
                                 <div class="form-floating my-3">
-                                    <input type="text" class="form-control" id="floatingAdress"
+                                    <input type="text" class="form-control" id="floatingAdress" asp-for="SDiaChi"
                                         placeholder="name@example.com">
                                     <label for="floatingAdress">Địa chỉ</label>
+                                    <span asp-validation-for="SDiaChi" class="text-danger"></span>
                                 </div>
                                 <div class="form-floating my-3">
-                                    <input type="date" class="form-control" id="floatingDob"
+                                    <input type="date" class="form-control" id="floatingDob" asp-for="DNgaySinh"
                                         placeholder="name@example.com">
                                     <label for="floatingDob">Ngày sinh</label>
+                                    <span asp-validation-for="DNgaySinh" class="text-danger"></span>
                                 </div>
                                 <div class="form-floating my-3">
-                                    <input type="password" class="form-control" id="floatingPassword"
+                                    <input type="password" class="form-control" id="floatingPassword" asp-for="SMatKhau"
                                         placeholder="Password">
                                     <label for="floatingPassword">Mật khẩu</label>
+                                    <span asp-validation-for="SMatKhau" class="text-danger"></span>
                                 </div>
                                 <div class="form-floating my-3">
                                     <input type="password" class="form-control" id="floatingRePassword"
@@ -55,7 +74,7 @@
                                     <label for="floatingRePassword">Nhập lại mật khẩu</label>
                                 </div>
                                 <div id="btnHolder">
-                                    <button class="btn btn-lg btn-primary mt-3 w-100">Đăng nhập</button>
+                                    <button class="btn btn-lg btn-primary mt-3 w-100">Đăng ký</button>
                                 </div>
                             </form>
                         </div>
