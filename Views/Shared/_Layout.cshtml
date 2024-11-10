@@ -13,6 +13,20 @@
     <link rel="stylesheet" href="~/css/cart.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/fontawesome/css/all.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/QLTV.styles.css" asp-append-version="true" />
+    <style>
+        .dropdown:hover > .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown > .dropdown-toggle:active {
+            /*Without this, clicking will make it sticky*/
+            pointer-events: none;
+        }
+
+        .dropdown {
+            color: #007cd5 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,14 +35,14 @@
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">QUẢN LÝ THƯ VIỆN SỐ</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1" style="min-width: 100px;">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                asp-action="Cart">Sách Mượn</a>
+                               asp-action="Cart">Sách Mượn</a>
                         </li>
                     </ul>
                     <div class="search-area">
@@ -36,13 +50,48 @@
                             <div class="input-search-area">
                                 <div class="form-outline" data-mdb-input-init>
                                     <input type="search" style="min-width: 400px;" id="form1" class="form-control"
-                                        placeholder="Nhập tên sách..." />
+                                           placeholder="Nhập tên sách..." />
                                 </div>
                                 <button type="button" class="btn btn-primary" data-mdb-ripple-init style="background-color: #0093fc;">
                                     <i class="fas fa-search"></i>
                                 </button>
                             </div>
-                            <a class="nav-link text-dark login-btn" href="./login">Đăng nhập/Đăng ký</a>
+                            @if (ViewData["CurrentAccount"] == null)
+                            {
+                                <a class="nav-link text-dark login-btn" href="./login">Đăng nhập/Đăng ký</a>
+                            }
+                            else
+                            {
+                                <div class="dropdown">
+                                    <a href="">
+                                        <button data-mdb-button-init
+                                                data-mdb-ripple-init data-mdb-dropdown-init class="btn btn-primary dropdown-toggle"
+                                                type="button"
+                                                id="dropdownMenuButton"
+                                                data-mdb-toggle="dropdown"
+                                                aria-expanded="false">
+                                            @ViewData["CurrentAccount"]
+                                        </button>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li><a class="dropdown-item" href="./logout">Đăng Xuất</a></li>
+                                        @if (ViewData["Quyen"]!.Equals("admin"))
+                                        {
+                                            <li>
+                                                <a class="dropdown-item" asp-area="" asp-controller="Admin"
+                                                   asp-action="Index">Quản lí</a>
+                                            </li>
+                                        }
+                                        @if (ViewData["Quyen"]!.Equals("user"))
+                                        {
+                                            <li>
+                                                <a class="dropdown-item" asp-area="" asp-controller="Account" asp-route-id="@ViewData["CurrentAccount"]"
+                                                   asp-action="Info">Thông tin</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -56,7 +105,9 @@
                     <div class="sidebar  shadow p-3 mb-5 bg-white rounded">
                         <div class="list-group">
                             <h5 class="text-center active"
-                                style="background-color: #007cd5;color:white;padding:10px;margin:0">DANH MỤC</h5>
+                                style="background-color: #007cd5;color:white;padding:10px;margin:0">
+                                DANH MỤC
+                            </h5>
                             @if (ViewData["DanhMuc"] != null)
                             {
                                 var danhmuc = (IEnumerable<dynamic>)ViewData["DanhMuc"];
@@ -70,7 +121,8 @@
                         </div>
                         <div class="list-group utilites">
                             <h5 class="text-center" style="background-color: #007cd5;color:white;padding:10px;margin:0">
-                                TIỆN ÍCH</h5>
+                                TIỆN ÍCH
+                            </h5>
                             <a href="#" class="list-group-item list-group-item-action">Giới thiệu</a>
                             <a href="#" class="list-group-item list-group-item-action">Tin tức</a>
                         </div>

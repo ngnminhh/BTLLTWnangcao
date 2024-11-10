@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using QLTV.Models;
+using QLTV.Repository;
 using System.Diagnostics;
 
 namespace QLTV.Controllers
@@ -10,30 +11,28 @@ namespace QLTV.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly QLTVContext context;
-        public HomeController(ILogger<HomeController> logger, QLTVContext context)
+        private readonly IHomeRepository ihome;
+        public HomeController(ILogger<HomeController> logger, QLTVContext context,IHomeRepository ihome)
         {
             _logger = logger;
             this.context = context;
+            this.ihome = ihome;
         }
 
         [Route("homepage")]
         public IActionResult Index()
         {
             ViewData["DanhMuc"] = context.TblDanhMucs?.ToList();
-            var danhmuc = context.TblDanhMucs.ToList();
-            var result = danhmuc.Select(c => new
+            var result = ihome.GetDMBooks();
+            var currentAccount = HttpContext.Session.GetString("CurrentAccount");
+            if (currentAccount != null)
             {
-                TenDanhMuc = c.STenDanhMuc,
-                MaDanhMuc = c.SMaDanhMuc,
-                SanPham = context.TblSaches
-                               .Where(p => p.SMaDanhMuc == c.SMaDanhMuc)
-                               .Select(p => new { p.SMaSach, p.STenSach, p.STenTacGia, p.SNhaXuatBan, p.ISoLuong, p.STrangThai, p.FGiaTien, p.SMaDanhMuc, p.SDuongDan })
-                               .Take(4)
-                               .ToList()
-            }).Take(3).ToList();
+                ViewData["CurrentAccount"] = currentAccount;
+                ViewData["Quyen"] = HttpContext.Session.GetString("Quyen");
+                return View(result);
+            }
             //List<object> resultList = result.Cast<object>().ToList();
-
-            return View(result);
+            return RedirectToAction("Login","Account");
         }
 
         [Route("cart")]
@@ -41,38 +40,32 @@ namespace QLTV.Controllers
         {
             ViewData["DanhMuc"] = context.TblDanhMucs?.ToList();
             ViewData["Title"] = "Giỏ hàng";
-            return View();
+            var currentAccount = HttpContext.Session.GetString("CurrentAccount");
+            if (currentAccount != null)
+            {
+                ViewData["CurrentAccount"] = currentAccount;
+                ViewData["Quyen"] = HttpContext.Session.GetString("Quyen");
+            }
+            var lstSachMuon = ihome.GetListBooksBorrow(currentAccount);
+            return View(lstSachMuon);
         }
         [Route("itemdetail")]
         public IActionResult ItemDetail(string id)
         {
             ViewData["DanhMuc"] = context.TblDanhMucs?.ToList();
             ViewData["Title"] = "Chi tiết sản phẩm";
-
+            var currentAccount = HttpContext.Session.GetString("CurrentAccount");
+            if (currentAccount != null)
+            {
+                ViewData["CurrentAccount"] = currentAccount;
+                ViewData["Quyen"] = HttpContext.Session.GetString("Quyen");
+            }
             var item = context.TblSaches.Find(id);
             if (item == null)
             {
                 return RedirectToAction("Index","Home");
             }
-            var lstSachTheoDM = (
-                    from b in context.TblSaches
-                    join c in context.TblDanhMucs
-                    on b.SMaDanhMuc equals c.SMaDanhMuc
-                    where c.SMaDanhMuc==item.SMaDanhMuc
-                    select new
-                    {
-                        TenSachChon=item.STenSach,
-                        TacGiaChon=item.STenTacGia,
-                        NXBChon=item.SNhaXuatBan,
-                        TrangThaiChon=item.STrangThai,
-                        GiaTienChon=item.FGiaTien,
-                        DuongDanChon=item.SDuongDan,
-                        SanPhamLienQuan = context.TblSaches
-                               .Where(p => p.SMaDanhMuc == c.SMaDanhMuc)
-                               .Select(p => new { p.SMaSach, p.STenSach, p.STenTacGia, p.SNhaXuatBan, p.ISoLuong, p.STrangThai, p.FGiaTien, p.SMaDanhMuc, p.SDuongDan })
-                               .OrderBy(x=>Guid.NewGuid()).Take(4).ToList()
-                    }
-                ).Take(1).ToList();
+            var lstSachTheoDM = ihome.GetItemDetail(id);
             return View(lstSachTheoDM);
         }
         [Route("danhmuc")]
@@ -80,22 +73,13 @@ namespace QLTV.Controllers
         {
             ViewData["DanhMuc"] = context.TblDanhMucs?.ToList();
             ViewData["Title"] = "Danh mục sách";
-
-            var lstSachTheoDM = (
-                    from b in context.TblSaches
-                    join c in context.TblDanhMucs
-                    on b.SMaDanhMuc equals c.SMaDanhMuc
-                    where c.SMaDanhMuc == id
-                    select new
-                    {
-                        TenDanhMuc = c.STenDanhMuc,
-                        MaDanhMuc = c.SMaDanhMuc,
-                        SanPham = context.TblSaches
-                               .Where(p => p.SMaDanhMuc == c.SMaDanhMuc)
-                               .Select(p => new { p.SMaSach, p.STenSach, p.STenTacGia, p.SNhaXuatBan, p.ISoLuong, p.STrangThai, p.FGiaTien, p.SMaDanhMuc, p.SDuongDan })
-                               .ToList()
-                    }
-                ).Take(1).ToList();
+            var currentAccount = HttpContext.Session.GetString("CurrentAccount");
+            if (currentAccount != null)
+            {
+                ViewData["CurrentAccount"] = currentAccount;
+                ViewData["Quyen"] = HttpContext.Session.GetString("Quyen");
+            }
+            var lstSachTheoDM = ihome.GetBookWithCategory(id);
             return View(lstSachTheoDM);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

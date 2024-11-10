@@ -1,75 +1,62 @@
-﻿<div class="main-cart">
-    <h3>Mã thẻ mượn: ID2345</h3>
-    <div class="list-rented-books">
-        <table class="table table-hover">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">STT</th>
-                    <th scope="col">Tên sách(báo/tạp chí)</th>
-                    <th scope="col">Ngày mượn</th>
-                    <th scope="col">Hạn trả</th>
-                    <th scope="col">Ngày trả thực tế</th>
-                    <th scope="col">Trạng thái</th>
-                    <th scope="col">Tác vụ</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Tư duy ngược</td>
-                    <td>1/11/2023</td>
-                    <td>12/12/2023</td>
-                    <td>-</td>
-                    <td><b class="is_pre_date">Chưa đến hạn</b></td>
-                    <td>
-                        <a href="" class="btn btn-info" style="color: white;">Gia hạn</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Tư duy ngược</td>
-                    <td>1/11/2023</td>
-                    <td>12/12/2023</td>
-                    <td>-</td>
-                    <td><b class="is_out_date">Hết hạn</b></td>
-                    <td>
-                        <a href="" class="btn btn-info" style="color: white;">Gia hạn</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Tư duy ngược</td>
-                    <td>1/11/2023</td>
-                    <td>12/12/2023</td>
-                    <td>-</td>
-                    <td><b class="is_out_date">Hết hạn</b></td>
-                    <td>
-                        <a href="" class="btn btn-info" style="color: white;">Gia hạn</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td>Tư duy ngược</td>
-                    <td>1/11/2023</td>
-                    <td>12/12/2023</td>
-                    <td>-</td>
-                    <td><b class="is_pre_date">Chưa đến hạn</b></td>
-                    <td>
-                        <a href="" class="btn btn-info" style="color: white;">Gia hạn</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">5</th>
-                    <td>Tư duy ngược</td>
-                    <td>1/11/2023</td>
-                    <td>12/12/2023</td>
-                    <td>-</td>
-                    <td><b class="is_out_date">Hết hạn</b></td>
-                    <td>
-                        <a href="" class="btn btn-info" style="color: white;">Gia hạn</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+﻿@model IEnumerable<dynamic>
+@{
+    var index = 1;
+    var isOutDate = false;
+    var isDone = false;
+}
+<div class="main-cart">
+    @if(Model.Count()<1){
+        <h3>Bạn chưa có sách nào, <a href="./homepage">Tìm sách ngay!!!</a></h3>
+    }
+    else
+    {
+        @foreach (var list in Model)
+        {
+            if (list.STrangThai.Equals("Done"))
+            {
+                isDone = true;
+            }
+            else
+            {
+                if (list.DNgayTra < DateTime.Now)
+                {
+                    isOutDate = true;
+                }
+            }
+            <h3>Mã thẻ mượn: @list.SMaTheMuon</h3>
+            <div class="list-rented-books">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Tên sách(báo/tạp chí)</th>
+                            <th scope="col">Ngày mượn</th>
+                            <th scope="col">Hạn trả</th>
+                            <th scope="col">Ngày trả thực tế</th>
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col">Tác vụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in list.SachDetails)
+                        {
+                            <tr>
+                                <th scope="row">@index</th>
+                                <td>@item.STenSach</td>
+                                <td>@list.DNgayMuon.ToString("dd/MM/yyyy")</td>
+                                <td>@list.DNgayTra.ToString("dd/MM/yyyy")</td>
+                                <td>@list.DNgayTraThucTe.ToString("dd/MM/yyyy")</td>
+                                <td><b class="is_pre_date">@(isDone ? "Đã trả" : (isOutDate ? "Quá hạn" : "Chưa đến hạn"))</b></td>
+                                <td>
+                                    <a href="" class="btn btn-info" style="color: white;">Gia hạn</a>
+                                </td>
+                            </tr>
+                            { index += 1; }
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        }
+    }
 </div>

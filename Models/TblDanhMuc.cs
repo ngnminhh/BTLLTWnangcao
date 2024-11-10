@@ -12,7 +12,6 @@ namespace QLTV.Models
 
         public string SMaDanhMuc { get; set; } = null!;
         public string? STenDanhMuc { get; set; }
-        public string? sTrangThai { get; set; }
 
         public virtual ICollection<TblSach> TblSaches { get; set; }
     }

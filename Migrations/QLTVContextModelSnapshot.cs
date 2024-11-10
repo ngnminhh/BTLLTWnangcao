@@ -35,9 +35,6 @@ namespace QLTV.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("sTenDanhMuc");
 
-                    b.Property<string>("sTrangThai")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("SMaDanhMuc")
                         .HasName("PK__tblDanhM__7D62A86F8FCB4038");
 

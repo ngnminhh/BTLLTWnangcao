@@ -4,7 +4,7 @@
 .navbar{
     background-color: #1b6ec2 !important;
 }
-.navbar *{
+.nav-link,.navbar-brand{
     color: white !important;
 }
 .navbar input{

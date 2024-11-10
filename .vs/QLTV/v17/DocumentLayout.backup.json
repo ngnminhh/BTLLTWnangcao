@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|d:\\asp core mvc\\btl_webnc\\views\\account\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|solutionrelative:views\\account\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|d:\\asp core mvc\\btl_webnc\\views\\account\\info.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|solutionrelative:views\\account\\info.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|d:\\asp core mvc\\btl_webnc\\models\\dtosignup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|solutionrelative:models\\dtosignup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|d:\\asp core mvc\\btl_webnc\\models\\dtoupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|solutionrelative:models\\dtoupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,28 +26,28 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SignUp.cshtml",
-              "DocumentMoniker": "D:\\asp core mvc\\BTL_WEBNC\\Views\\Account\\SignUp.cshtml",
-              "RelativeDocumentMoniker": "Views\\Account\\SignUp.cshtml",
-              "ToolTip": "D:\\asp core mvc\\BTL_WEBNC\\Views\\Account\\SignUp.cshtml",
-              "RelativeToolTip": "Views\\Account\\SignUp.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-08T07:09:15.912Z",
+              "DocumentIndex": 2,
+              "Title": "DtoUpdate.cs",
+              "DocumentMoniker": "D:\\asp core mvc\\BTL_WEBNC\\Models\\DtoUpdate.cs",
+              "RelativeDocumentMoniker": "Models\\DtoUpdate.cs",
+              "ToolTip": "D:\\asp core mvc\\BTL_WEBNC\\Models\\DtoUpdate.cs",
+              "RelativeToolTip": "Models\\DtoUpdate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-10T11:46:46.578Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DtoSignup.cs",
-              "DocumentMoniker": "D:\\asp core mvc\\BTL_WEBNC\\Models\\DtoSignup.cs",
-              "RelativeDocumentMoniker": "Models\\DtoSignup.cs",
-              "ToolTip": "D:\\asp core mvc\\BTL_WEBNC\\Models\\DtoSignup.cs",
-              "RelativeToolTip": "Models\\DtoSignup.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-08T07:40:29.564Z",
+              "DocumentIndex": 1,
+              "Title": "Info.cshtml",
+              "DocumentMoniker": "D:\\asp core mvc\\BTL_WEBNC\\Views\\Account\\Info.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\Info.cshtml",
+              "ToolTip": "D:\\asp core mvc\\BTL_WEBNC\\Views\\Account\\Info.cshtml",
+              "RelativeToolTip": "Views\\Account\\Info.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACoAAABrAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-10T11:42:05.747Z",
               "EditorCaption": ""
             },
             {
@@ -58,9 +58,9 @@
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
               "ToolTip": "D:\\asp core mvc\\BTL_WEBNC\\Controllers\\AccountController.cs*",
               "RelativeToolTip": "Controllers\\AccountController.cs*",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAwwFcAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAqwIEAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-08T07:15:27.555Z",
+              "WhenOpened": "2024-11-10T10:09:25.009Z",
               "EditorCaption": ""
             }
           ]
