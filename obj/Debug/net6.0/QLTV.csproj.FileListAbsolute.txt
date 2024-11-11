@@ -123,3 +123,4 @@ D:\asp core mvc\BTL_WEBNC\obj\Debug\net6.0\refint\QLTV.dll
 D:\asp core mvc\BTL_WEBNC\obj\Debug\net6.0\QLTV.pdb
 D:\asp core mvc\BTL_WEBNC\obj\Debug\net6.0\QLTV.genruntimeconfig.cache
 D:\asp core mvc\BTL_WEBNC\obj\Debug\net6.0\ref\QLTV.dll
+D:\asp core mvc\BTL_WEBNC\bin\Debug\net6.0\libman.json

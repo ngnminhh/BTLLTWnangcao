@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace QLTV.Models
 {
@@ -10,7 +9,7 @@ namespace QLTV.Models
         {
             TblTaiKhoans = new HashSet<TblTaiKhoan>();
         }
-        [MaxLength(100)]
+
         public string SMaNguoiDung { get; set; } = null!;
         public string? STenNguoiDung { get; set; }
         public string? SCccd { get; set; }

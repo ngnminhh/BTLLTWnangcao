@@ -34,6 +34,7 @@ namespace QLTV.Repository
                     where c.SMaDanhMuc == item.SMaDanhMuc
                     select new
                     {
+                        SMaSach=item.SMaSach,
                         TenSachChon = item.STenSach,
                         TacGiaChon = item.STenTacGia,
                         NXBChon = item.SNhaXuatBan,
@@ -93,6 +94,10 @@ namespace QLTV.Repository
                     }
                 ).ToList();
             return lstSachMuon;
+        }
+        public void AddBook(string currentUser)
+        {
+
         }
     }
 }

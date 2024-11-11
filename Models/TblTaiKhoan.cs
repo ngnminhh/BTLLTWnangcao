@@ -8,9 +8,9 @@ namespace QLTV.Models
         public string STaiKhoan { get; set; } = null!;
         public string? SMatKhau { get; set; }
         public string? SMaQuyen { get; set; }
-        public string? SMaNguoiDung { get; set; }
+        public string SMaNguoiDung { get; set; } = null!;
 
-        public virtual TblNguoiDung? SMaNguoiDungNavigation { get; set; }
+        public virtual TblNguoiDung SMaNguoiDungNavigation { get; set; } = null!;
         public virtual TblQuyen? SMaQuyenNavigation { get; set; }
     }
 }

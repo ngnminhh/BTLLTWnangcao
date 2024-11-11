@@ -31,7 +31,6 @@ namespace QLTV.Controllers
                 ViewData["Quyen"] = HttpContext.Session.GetString("Quyen");
                 return View(result);
             }
-            //List<object> resultList = result.Cast<object>().ToList();
             return RedirectToAction("Login","Account");
         }
 
@@ -67,6 +66,43 @@ namespace QLTV.Controllers
             }
             var lstSachTheoDM = ihome.GetItemDetail(id);
             return View(lstSachTheoDM);
+        }
+        [Route("add_to_cart")]
+        public IActionResult AddToCart(string id)
+        {
+            string previousUrl = Request.Headers["Referer"].ToString();
+            try
+            {
+                var currentUser = HttpContext.Session.GetString("CurrentAccount");
+                var theMuon = context.TblNguoiDungs.FirstOrDefault(s => s.SMaNguoiDung.Equals(currentUser));
+                string maTheMuon = theMuon.SMaTheMuon;
+                var maSach = id;
+                var ngayMuon = DateTime.Now;
+                var ngayTra = ngayMuon.AddDays(14);
+                var ngayTraDuKien = ngayTra.AddDays(5);
+                var uptThe = context.TblTheMuons.FirstOrDefault(s => s.SMaTheMuon.Equals(maTheMuon));
+                uptThe.DNgayMuon = ngayMuon;
+                uptThe.DNgayTra = ngayTra;
+                uptThe.DNgayTraDuKien = ngayTraDuKien;
+
+                TblDanhSachMuon newDS = new TblDanhSachMuon()
+                {
+                    SMaSach = maSach,
+                    SMaTheMuon = maTheMuon,
+                };
+                context.TblDanhSachMuons.Add(newDS);
+                context.SaveChanges();
+                TempData["AddSuccess"] = "Đặt sách thành công";
+            }
+            catch (DbUpdateException ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.Message.Contains("duplicate key"))
+                {
+                    TempData["ErrorMessage"] = "Bạn đã đặt sách này";
+                }
+                return Redirect(previousUrl);
+            }
+            return Redirect(previousUrl);
         }
         [Route("danhmuc")]
         public IActionResult Category(string id)

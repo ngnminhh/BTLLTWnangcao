@@ -3,6 +3,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using QLTV.Models;
 using QLTV.Repository;
+using System.Net.WebSockets;
 using System.Security.Principal;
 namespace QLTV.Controllers
 {
@@ -55,14 +56,14 @@ namespace QLTV.Controllers
         {
             ViewData["Title"] = "Đăng ký";
             string idUser = act.STaiKhoan;
+            var httpContext = HttpContext;
             if (!ModelState.IsValid)
             {
                 return View(act);
             }
             try
             {
-                var context = HttpContext;
-                iaccount.CreateAccount(act,idUser,context);
+                iaccount.CreateAccount(act,idUser, httpContext);
                 return RedirectToAction("Index", "Home");
             }
             catch (DbUpdateException ex)
@@ -81,14 +82,14 @@ namespace QLTV.Controllers
             return View();
         }
         [Route("update_info")]
-        public IActionResult Info(string id)
+        public IActionResult Info()
         {
             ViewData["DanhMuc"] = context.TblDanhMucs?.ToList();
             string currentUser = HttpContext.Session.GetString("CurrentAccount");
             var userInfo =context.TblNguoiDungs.FirstOrDefault(s=>s.SMaNguoiDung.Equals(currentUser));
             if (userInfo != null)
             {
-                ViewData["CurrentAccount"] = userInfo;
+                ViewData["CurrentAccount"] = currentUser;
                 ViewData["Quyen"] = HttpContext.Session.GetString("Quyen");
             }
             DtoUpdate udtUser = new DtoUpdate()
@@ -115,21 +116,11 @@ namespace QLTV.Controllers
 
             if(!ModelState.IsValid)
             {
-                ViewData["DanhMuc"] = context.TblDanhMucs?.ToList();
-                string currentUser = HttpContext.Session.GetString("CurrentAccount");
-                var userInfo = context.TblNguoiDungs.FirstOrDefault(s => s.SMaNguoiDung.Equals(currentUser));
-                DtoUpdate udtUser = new DtoUpdate()
-                {
-                    STaiKhoan = currentUser,
-                    STenNguoiDung = userInfo.STenNguoiDung,
-                    SCccd = userInfo.SCccd,
-                    SDiaChi = userInfo.SDiaChi,
-                    DNgaySinh = userInfo.DNgaySinh,
-                    SMaTheMuon = userInfo.SMaTheMuon,
-                };
-                return Json(currentUser);
+                return View(uptDto);
             }
-            return Json(uptDto);
+            iaccount.UpdateAccount(uptDto, currentAccount);
+            TempData["UpdateSuccess"] = "Cập nhật thành công";
+            return RedirectToAction("Info","Account");
         }
         [Route("logout")]
         public IActionResult LogOut()

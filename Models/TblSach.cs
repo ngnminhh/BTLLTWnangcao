@@ -5,6 +5,11 @@ namespace QLTV.Models
 {
     public partial class TblSach
     {
+        public TblSach()
+        {
+            TblDanhSachMuons = new HashSet<TblDanhSachMuon>();
+        }
+
         public string SMaSach { get; set; } = null!;
         public string? STenSach { get; set; }
         public string? SNhaXuatBan { get; set; }
@@ -17,6 +22,6 @@ namespace QLTV.Models
         public string? SDuongDan { get; set; }
 
         public virtual TblDanhMuc? SMaDanhMucNavigation { get; set; }
-        public virtual TblDanhSachMuon? TblDanhSachMuon { get; set; }
+        public virtual ICollection<TblDanhSachMuon> TblDanhSachMuons { get; set; }
     }
 }

@@ -5,11 +5,11 @@ namespace QLTV.Models
 {
     public partial class TblDanhSachMuon
     {
-        public string SMaDanhSach { get; set; } = null!;
-        public string? SMaSach { get; set; }
-        public string? SMaTheMuon { get; set; }
+        public string? SMaDanhSach { get; set; }
+        public string SMaSach { get; set; } = null!;
+        public string SMaTheMuon { get; set; } = null!;
 
-        public virtual TblSach SMaDanhSachNavigation { get; set; } = null!;
-        public virtual TblTheMuon? SMaTheMuonNavigation { get; set; }
+        public virtual TblSach SMaSachNavigation { get; set; } = null!;
+        public virtual TblTheMuon SMaTheMuonNavigation { get; set; } = null!;
     }
 }

@@ -2,6 +2,18 @@
 <div class="details">
     @foreach (var list in Model)
     {
+        if (TempData["AddSuccess"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["AddSuccess"]
+            </div>
+        }
+        else if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
         <div class="item-details">
             <div class="img-item img-book" style="margin-right:20px;">
                 <img src="~/images/@list.DuongDanChon" alt="">
@@ -24,7 +36,7 @@
                     <p id="price">@list.GiaTienChon VNĐ</p>
                 </div>
                 <div class="item-action">
-                    <a href="" class="btn btn-primary">Mượn ngay</a>
+                    <a href="./add_to_cart?id=@list.SMaSach" class="btn btn-primary">Mượn ngay</a>
                 </div>
             </div>
         </div>

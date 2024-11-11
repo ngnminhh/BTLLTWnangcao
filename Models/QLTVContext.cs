@@ -29,7 +29,7 @@ namespace QLTV.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-PQ7LVJL\\SQLEXPRESS;Initial Catalog=QLTV;Integrated Security=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-PQ7LVJL\\SQLEXPRESS;Initial Catalog=QLTV;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
             }
         }
 
@@ -54,15 +54,10 @@ namespace QLTV.Models
 
             modelBuilder.Entity<TblDanhSachMuon>(entity =>
             {
-                entity.HasKey(e => e.SMaDanhSach)
-                    .HasName("PK__tblDanhS__8DBFA015847F2667");
+                entity.HasKey(e => new { e.SMaSach, e.SMaTheMuon })
+                    .HasName("PK__tblDanhS__2C5E09B813667007");
 
                 entity.ToTable("tblDanhSachMuon");
-
-                entity.Property(e => e.SMaDanhSach)
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .HasColumnName("sMaDanhSach");
 
                 entity.Property(e => e.SMaSach)
                     .HasMaxLength(10)
@@ -74,28 +69,33 @@ namespace QLTV.Models
                     .IsUnicode(false)
                     .HasColumnName("sMaTheMuon");
 
-                entity.HasOne(d => d.SMaDanhSachNavigation)
-                    .WithOne(p => p.TblDanhSachMuon)
-                    .HasForeignKey<TblDanhSachMuon>(d => d.SMaDanhSach)
+                entity.Property(e => e.SMaDanhSach)
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .HasColumnName("sMaDanhSach");
+
+                entity.HasOne(d => d.SMaSachNavigation)
+                    .WithMany(p => p.TblDanhSachMuons)
+                    .HasForeignKey(d => d.SMaSach)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__tblDanhSa__sMaDa__5629CD9C");
 
                 entity.HasOne(d => d.SMaTheMuonNavigation)
                     .WithMany(p => p.TblDanhSachMuons)
                     .HasForeignKey(d => d.SMaTheMuon)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__tblDanhSa__sMaTh__5535A963");
             });
 
             modelBuilder.Entity<TblNguoiDung>(entity =>
             {
                 entity.HasKey(e => e.SMaNguoiDung)
-                    .HasName("PK__tblNguoi__47E09BE3C780583C");
+                    .HasName("PK_nguoidung");
 
                 entity.ToTable("tblNguoiDung");
 
                 entity.Property(e => e.SMaNguoiDung)
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
+                    .HasMaxLength(100)
                     .HasColumnName("sMaNguoiDung");
 
                 entity.Property(e => e.DNgaySinh)
@@ -211,8 +211,7 @@ namespace QLTV.Models
                     .HasColumnName("sTaiKhoan");
 
                 entity.Property(e => e.SMaNguoiDung)
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
+                    .HasMaxLength(100)
                     .HasColumnName("sMaNguoiDung");
 
                 entity.Property(e => e.SMaQuyen)
@@ -228,7 +227,8 @@ namespace QLTV.Models
                 entity.HasOne(d => d.SMaNguoiDungNavigation)
                     .WithMany(p => p.TblTaiKhoans)
                     .HasForeignKey(d => d.SMaNguoiDung)
-                    .HasConstraintName("FK__tblTaiKho__sMaNg__59063A47");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_taikhoan_nguoidung");
 
                 entity.HasOne(d => d.SMaQuyenNavigation)
                     .WithMany(p => p.TblTaiKhoans)

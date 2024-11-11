@@ -4,7 +4,6 @@ namespace QLTV.Models
 {
     public class DtoUpdate
     {
-        [Required(ErrorMessage = "Email không được để trống"), MaxLength(100)]
         public string STaiKhoan { get; set; } = "";
 
         [Required(ErrorMessage = "Họ tên không được để trống"), MaxLength(100)]
