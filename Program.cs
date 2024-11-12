@@ -20,6 +20,7 @@ builder.Services.AddSession(options =>
 });
 builder.Services.AddScoped<IHomeRepository, HomeRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRespository>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 
 var app = builder.Build();
 
