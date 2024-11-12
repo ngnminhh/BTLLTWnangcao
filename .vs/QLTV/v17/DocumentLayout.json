@@ -3,23 +3,8 @@
   "WorkspaceRootPath": "D:\\asp core mvc\\BTL_WEBNC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\asp core mvc\\CRUD_Learn\\ProductController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|d:\\asp core mvc\\btl_webnc\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|d:\\asp core mvc\\btl_webnc\\repository\\adminrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|solutionrelative:repository\\adminrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|d:\\asp core mvc\\btl_webnc\\repository\\iadminrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|solutionrelative:repository\\iadminrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|d:\\asp core mvc\\btl_webnc\\views\\admin\\booksmanage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|solutionrelative:views\\admin\\booksmanage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|d:\\asp core mvc\\btl_webnc\\views\\account\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{41FDACFF-FC3C-491F-8ACC-D806CF04B69B}|QLTV.csproj|solutionrelative:views\\account\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,64 +19,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "D:\\asp core mvc\\CRUD_Learn\\ProductController.cs",
-              "RelativeDocumentMoniker": "..\\CRUD_Learn\\ProductController.cs",
-              "ToolTip": "D:\\asp core mvc\\CRUD_Learn\\ProductController.cs",
-              "RelativeToolTip": "..\\CRUD_Learn\\ProductController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAADMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T14:08:03.548Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BooksManage.cshtml",
-              "DocumentMoniker": "D:\\asp core mvc\\BTL_WEBNC\\Views\\Admin\\BooksManage.cshtml",
-              "RelativeDocumentMoniker": "Views\\Admin\\BooksManage.cshtml",
-              "ToolTip": "D:\\asp core mvc\\BTL_WEBNC\\Views\\Admin\\BooksManage.cshtml",
-              "RelativeToolTip": "Views\\Admin\\BooksManage.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAHIAAAAGAAAAAAAAAA==",
+              "Title": "SignUp.cshtml",
+              "DocumentMoniker": "D:\\asp core mvc\\BTL_WEBNC\\Views\\Account\\SignUp.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\SignUp.cshtml",
+              "ToolTip": "D:\\asp core mvc\\BTL_WEBNC\\Views\\Account\\SignUp.cshtml",
+              "RelativeToolTip": "Views\\Account\\SignUp.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACIAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-11T23:33:41.682Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\asp core mvc\\BTL_WEBNC\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
-              "ToolTip": "D:\\asp core mvc\\BTL_WEBNC\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "Controllers\\AdminController.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwC0AAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-11T23:27:48.213Z",
+              "WhenOpened": "2024-11-12T16:18:01.415Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AdminRepository.cs",
-              "DocumentMoniker": "D:\\asp core mvc\\BTL_WEBNC\\Repository\\AdminRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\AdminRepository.cs",
-              "ToolTip": "D:\\asp core mvc\\BTL_WEBNC\\Repository\\AdminRepository.cs",
-              "RelativeToolTip": "Repository\\AdminRepository.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAswBcAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-11T23:26:10.041Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IAdminRepository.cs",
-              "DocumentMoniker": "D:\\asp core mvc\\BTL_WEBNC\\Repository\\IAdminRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\IAdminRepository.cs",
-              "ToolTip": "D:\\asp core mvc\\BTL_WEBNC\\Repository\\IAdminRepository.cs",
-              "RelativeToolTip": "Repository\\IAdminRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-11T23:25:34.352Z"
             }
           ]
         }

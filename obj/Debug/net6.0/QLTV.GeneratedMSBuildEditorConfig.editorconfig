@@ -30,6 +30,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWduVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/asp core mvc/BTL_WEBNC/Views/Admin/AccountsManage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWNjb3VudHNNYW5hZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/asp core mvc/BTL_WEBNC/Views/Admin/BooksManage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQm9va3NNYW5hZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

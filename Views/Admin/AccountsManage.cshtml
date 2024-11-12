@@ -1,0 +1,103 @@
+﻿@model DtoSignup
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int index = 1;
+    var lstAccount = TempData["ListAccount"];
+}
+<h1 class="text-center">Quản lý tài khoản</h1>
+<div class="button-area" style="display: flex;justify-content: end;">
+    <button type="button" class="btn btn-success" id="btn-add">
+        <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+    </button>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Tài khoản</th>
+            <th scope="col">Mật khẩu</th>
+            <th scope="col">CCCD</th>
+            <th scope="col">Địa chỉ</th>
+            <th scope="col">Ngày sinh</th>
+            <th scope="col">Tác vụ</th>
+        </tr>
+    </thead>
+    <tbody id="list-account">
+        @foreach (var item in (dynamic)(lstAccount))
+        {
+            <tr>
+                <td class="taikhoan">@item.STaiKhoan</td>
+                <td class="matkhau">@item.SMatKhau</td>
+                <td class="amount">@item.SCccd</td>
+                <td class="status">@item.SDiaChi</td>
+                <td class="dob">@item.DNgaySinh</td>
+                <td class="author"><button type="button" class="btn btn-primary btn-fix"><i class="fa-solid fa-wrench"
+                            style="color: #ffffff;"></i></button>
+                    <button type="button" class="btn btn-danger btn-del"><i class="fa-solid fa-trash"
+                            style="color: #ffffff;"></i></button>
+                </td>
+                <input type="hidden" name="SMaNguoiDung" value="@item.SMaNguoiDung" class="item_manguoidung">
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" id="form-books" asp-action="Account" asp-controller="Admin">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="STaiKhoan">Tài khoản</label>
+                        <input type="email" class="form-control" asp-for="STaiKhoan" placeholder="Nhập tài khoản" id="STaiKhoan">
+                        <span asp-validation-for="STaiKhoan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="SMatKhau">Mật khẩu</label>
+                        <input type="text" class="form-control" asp-for="SMatKhau" placeholder="Nhập mật khẩu" id="SMatKhau">
+                        <span asp-validation-for="SMatKhau" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="SMatKhau">Nhập lại mật khẩu</label>
+                        <input type="text" class="form-control" asp-for="SMatKhau" id="RePassWord"
+                            placeholder="Nhập lại mật khẩu">
+                        <span asp-validation-for="SMatKhau" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="SCccd">Căn cước công dân</label>
+                        <input type="text" class="form-control" asp-for="SCccd" placeholder="Nhập căn cước công dân" id="SCccd">
+                        <span asp-validation-for="SCccd" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="SDiaChi">Địa chỉ</label>
+                        <input type="text" class="form-control" asp-for="SDiaChi" placeholder="Nhập địa chỉ" id="SDiaChi">
+                        <span asp-validation-for="SMatKhau" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="DNgaySinh">Ngày sinh</label>
+                        <input type="date" class="form-control" asp-for="DNgaySinh" id="DNgaySinh">
+                        <span asp-validation-for="DNgaySinh" class="text-danger"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="btn-close"
+                            data-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary" id="btn-action">Thực hiện</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/accountsmanage.js" asp-append-version="true"></script>

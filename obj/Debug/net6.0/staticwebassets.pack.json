@@ -9317,6 +9317,10 @@
       "PackagePath": "staticwebassets\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
+      "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\js\\accountsmanage.js",
+      "PackagePath": "staticwebassets\\js\\accountsmanage.js"
+    },
+    {
       "Id": "D:\\asp core mvc\\BTL_WEBNC\\wwwroot\\js\\booksmanage.js",
       "PackagePath": "staticwebassets\\js\\booksmanage.js"
     },

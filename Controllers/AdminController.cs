@@ -69,7 +69,8 @@ namespace QLTV.Controllers
                 STrangThai = bookStatus,
                 FGiaTien = float.Parse(bookPrice),
                 SMaDanhMuc = bookCategory,
-                STenTacGia = bookAuthor
+                STenTacGia = bookAuthor,
+                SDuongDan = "megazine11.jpg"
             };
             context.TblSaches.Add(newSach);
             context.SaveChanges();
@@ -87,8 +88,8 @@ namespace QLTV.Controllers
         [HttpPost]
         public IActionResult DeleteBook(IFormCollection form)
         {
-            var bookID=form["bookID"];
-            var delSach=context.TblSaches.FirstOrDefault(s=>s.SMaSach.Equals(bookID));
+            var bookID = form["bookID"];
+            var delSach = context.TblSaches.FirstOrDefault(s => s.SMaSach.Equals(bookID));
             context.TblSaches.Remove(delSach);
             context.SaveChanges(true);
             return Ok("Đã xóa sản phẩm");
@@ -97,7 +98,56 @@ namespace QLTV.Controllers
         public IActionResult Account()
         {
             ViewData["Title"] = "Quản lý người dùng";
-            return View();
+            var lstBooks = (
+                    from b in context.TblTaiKhoans
+                    join c in context.TblNguoiDungs
+                    on b.SMaNguoiDung equals c.SMaNguoiDung
+                    select new
+                    {
+                        b.STaiKhoan,
+                        b.SMatKhau,
+                        b.SMaQuyen,
+                        b.SMaNguoiDung,
+                        c.STenNguoiDung,
+                        c.SCccd,
+                        c.SDiaChi,
+                        c.DNgaySinh
+                    }
+                ).ToList();
+            TempData["ListAccount"] = lstBooks;
+            return View("AccountsManage");
+        }
+
+        [Route("add_account")]
+        [HttpPost]
+        public IActionResult Account(IFormCollection form)
+        {
+            ViewData["Title"] = "Quản lý người dùng";
+            if(!ModelState.IsValid)
+            {
+                return Json(new {success=false,message="Dữ liệu không hợp lệ"});
+            }
+            var taikhoan = form["STaiKhoan"];
+            var matkhau = form["SMatKhau"];
+            var cccd = form["SCccd"];
+            var diachi = form["SDiaChi"];
+            var ngaysinh = form["DNgaySinh"];
+
+            TblTaiKhoan newTK = new TblTaiKhoan()
+            {
+                STaiKhoan = taikhoan,
+                SMatKhau = matkhau,
+                SMaQuyen = "user"
+            };
+            TblNguoiDung newUser = new TblNguoiDung()
+            {
+                SMaNguoiDung = taikhoan,
+                STenNguoiDung = null,
+                SCccd = cccd,
+                SDiaChi = diachi,
+                DNgaySinh = DateTime.Parse(ngaysinh)
+            };
+            return Json(new { data = newTK, user = newUser });
         }
         [Route("cart_manage")]
         public IActionResult Cart()
