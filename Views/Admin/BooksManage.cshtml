@@ -24,11 +24,11 @@
             <th scope="col">Tác vụ</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="list-sach">
         @foreach (var item in Model)
         {
             <tr>
-                <th scope="row">@index</th>
+                <th scope="row">@item.SMaSach</th>
                 <td class="bookname">@item.STenSach</td>
                 <td class="nxb">@item.SNhaXuatBan</td>
                 <td style="max-width: 80px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;" class="description">
@@ -45,7 +45,7 @@
                 <td>
                     <button type="button" class="btn btn-primary btn-fix"><i class="fa-solid fa-wrench"
                             style="color: #ffffff;"></i></button>
-                    <button type="button" class="btn btn-danger bt-del"><i class="fa-solid fa-trash"
+                    <button type="button" class="btn btn-danger btn-del"><i class="fa-solid fa-trash"
                             style="color: #ffffff;"></i></button>
                 </td>
                 <input type="hidden" name="SMaSach" value="@item.SMaSach" class="item_masach">
