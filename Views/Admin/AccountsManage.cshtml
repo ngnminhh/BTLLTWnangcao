@@ -5,6 +5,11 @@
     var lstAccount = TempData["ListAccount"];
 }
 <h1 class="text-center">Quản lý tài khoản</h1>
+@if(TempData["AddSuccess"]!=null){
+    <div class="alert alert-success">
+            @TempData["AddSuccess"]
+        </div>
+}
 <div class="button-area" style="display: flex;justify-content: end;">
     <button type="button" class="btn btn-success" id="btn-add">
         <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
@@ -27,10 +32,10 @@
             <tr>
                 <td class="taikhoan">@item.STaiKhoan</td>
                 <td class="matkhau">@item.SMatKhau</td>
-                <td class="amount">@item.SCccd</td>
-                <td class="status">@item.SDiaChi</td>
-                <td class="dob">@item.DNgaySinh</td>
-                <td class="author"><button type="button" class="btn btn-primary btn-fix"><i class="fa-solid fa-wrench"
+                <td class="cccd">@item.SCccd</td>
+                <td class="diachi">@item.SDiaChi</td>
+                <td class="dob" >@Convert.ToDateTime(item.DNgaySinh).ToString("dd/MM/yyyy")</td>
+                <td class="button-action"><button type="button" class="btn btn-primary btn-fix"><i class="fa-solid fa-wrench"
                             style="color: #ffffff;"></i></button>
                     <button type="button" class="btn btn-danger btn-del"><i class="fa-solid fa-trash"
                             style="color: #ffffff;"></i></button>
@@ -52,7 +57,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" id="form-books" asp-action="Account" asp-controller="Admin">
+            <form method="post" id="form-books" asp-action="AddAccount" asp-controller="Admin">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="STaiKhoan">Tài khoản</label>

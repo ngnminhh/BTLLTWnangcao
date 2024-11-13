@@ -117,15 +117,43 @@ namespace QLTV.Controllers
             TempData["ListAccount"] = lstBooks;
             return View("AccountsManage");
         }
-
-        [Route("add_account")]
+        [Route("create_account")]
+        [HttpPost]
+        public IActionResult AddAccount(DtoSignup dtoSignup)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("AccountsManage", dtoSignup);
+            }
+            TblTaiKhoan newTK = new TblTaiKhoan()
+            {
+                STaiKhoan = dtoSignup.STaiKhoan,
+                SMatKhau = dtoSignup.SMatKhau,
+                SMaQuyen = "user",
+                SMaNguoiDung = dtoSignup.STaiKhoan
+            };
+            TblNguoiDung newUser = new TblNguoiDung()
+            {
+                SMaNguoiDung = dtoSignup.STaiKhoan,
+                STenNguoiDung = null,
+                SCccd = dtoSignup.SCccd,
+                SDiaChi = dtoSignup.SDiaChi,
+                DNgaySinh = DateTime.Parse(dtoSignup.DNgaySinh.ToString()),
+            };
+            context.TblNguoiDungs.Add(newUser);
+            context.TblTaiKhoans.Add(newTK);
+            context.SaveChanges();
+            TempData["AddSuccess"] = "Thêm người dùng thành công";
+            return RedirectToAction("Account", "Admin");
+        }
+        [Route("edit_account")]
         [HttpPost]
         public IActionResult Account(IFormCollection form)
         {
             ViewData["Title"] = "Quản lý người dùng";
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return Json(new {success=false,message="Dữ liệu không hợp lệ"});
+                return Json(new { success = false, message = "Dữ liệu không hợp lệ" });
             }
             var taikhoan = form["STaiKhoan"];
             var matkhau = form["SMatKhau"];
@@ -133,21 +161,31 @@ namespace QLTV.Controllers
             var diachi = form["SDiaChi"];
             var ngaysinh = form["DNgaySinh"];
 
-            TblTaiKhoan newTK = new TblTaiKhoan()
-            {
-                STaiKhoan = taikhoan,
-                SMatKhau = matkhau,
-                SMaQuyen = "user"
-            };
-            TblNguoiDung newUser = new TblNguoiDung()
-            {
-                SMaNguoiDung = taikhoan,
-                STenNguoiDung = null,
-                SCccd = cccd,
-                SDiaChi = diachi,
-                DNgaySinh = DateTime.Parse(ngaysinh)
-            };
-            return Json(new { data = newTK, user = newUser });
+            var user = context.TblNguoiDungs.FirstOrDefault(u => u.SMaNguoiDung.Equals(taikhoan));
+            user.SCccd = cccd;
+            user.SDiaChi = diachi;
+            user.DNgaySinh = DateTime.Parse(ngaysinh.ToString());
+            var account=context.TblTaiKhoans.FirstOrDefault(a => a.STaiKhoan.Equals(taikhoan));
+            account.SMatKhau = matkhau;
+
+            context.TblNguoiDungs.Update(user);
+            context.TblTaiKhoans.Update(account);
+            context.SaveChanges();
+
+            return Json(new { succes = true, message="Cập nhật người dùng thành công",taikhoan=taikhoan,matkhau=matkhau,cccd=cccd,diachi=diachi,ngaysinh=ngaysinh });
+        }
+
+        [Route("del_account")]
+        [HttpPost]
+        public JsonResult DeleteAccount(IFormCollection form){
+            var taikhoan=form["STaiKhoan"];
+            TblTaiKhoan delTk=context.TblTaiKhoans.FirstOrDefault(s=>s.STaiKhoan.Equals(taikhoan));
+            TblNguoiDung delNd=context.TblNguoiDungs.FirstOrDefault(s=>s.SMaNguoiDung.Equals(taikhoan));
+
+            context.TblTaiKhoans.Remove(delTk);
+            context.TblNguoiDungs.Remove(delNd);
+            context.SaveChanges();
+            return Json(new{success=true,data=taikhoan});
         }
         [Route("cart_manage")]
         public IActionResult Cart()
