@@ -1,4 +1,5 @@
-﻿using QLTV.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using QLTV.Models;
 
 namespace QLTV.Repository
 {
@@ -82,5 +83,49 @@ namespace QLTV.Repository
                 ).ToList();
             return lstBooks;
         }
+
+        public IEnumerable<dynamic> UpdateDM(IFormCollection form)
+        {
+            var id = form["id"];
+            var tendm = form["tendm"];
+
+            try
+            {
+                var CategoryUpdate = context.TblDanhMucs.FirstOrDefault(e => e.SMaDanhMuc.Equals(id));
+                if (CategoryUpdate == null)
+                {
+                    throw new InvalidOperationException("Category not found");
+                }
+
+                CategoryUpdate.STenDanhMuc = tendm;
+                context.SaveChanges();
+
+                var lstDM = (
+                    from c in context.TblDanhMucs
+                    select new
+                    {
+                        c.SMaDanhMuc,
+                        c.STenDanhMuc
+                    }
+                ).ToList();
+
+                return lstDM;
+            }
+            catch (DbUpdateException dbEx)
+            {
+                // Lỗi update cơ sở dữ liệu
+                Console.WriteLine("Error occurred while saving the changes: " + dbEx.InnerException?.Message);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                // Lỗi khác
+                Console.WriteLine("An error occurred: " + ex.Message);
+                throw;
+            }
+        }
+
+
+
     }
 }

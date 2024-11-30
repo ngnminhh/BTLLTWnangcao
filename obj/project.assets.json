@@ -2013,19 +2013,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\daiko\\.nuget\\packages\\": {}
+    "C:\\Users\\WELCOME\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\asp core mvc\\BTL_WEBNC\\QLTV.csproj",
+      "projectUniqueName": "C:\\Users\\WELCOME\\Downloads\\BTL_WEBNC\\QLTV.csproj",
       "projectName": "QLTV",
-      "projectPath": "D:\\asp core mvc\\BTL_WEBNC\\QLTV.csproj",
-      "packagesPath": "C:\\Users\\daiko\\.nuget\\packages\\",
-      "outputPath": "D:\\asp core mvc\\BTL_WEBNC\\obj\\",
+      "projectPath": "C:\\Users\\WELCOME\\Downloads\\BTL_WEBNC\\QLTV.csproj",
+      "packagesPath": "C:\\Users\\WELCOME\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\WELCOME\\Downloads\\BTL_WEBNC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\daiko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\WELCOME\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

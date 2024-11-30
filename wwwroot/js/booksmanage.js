@@ -1,28 +1,28 @@
-$(document).ready(function () {
+$(document).ready(function() {
     //Xử lí modal
-    $("#myModal").on("shown.bs.modal", function () {
+    $("#myModal").on("shown.bs.modal", function() {
         $("#myInput").trigger("focus");
     });
-    $(".btn-fix").on("click", function () {
+    $(".btn-fix").on("click", function() {
         $("#exampleModal").modal("show");
         $("#exampleModalLabel").text("Cập nhật sản phẩm");
     });
-    $("#btn-add").on("click", function () {
+    $("#btn-add").on("click", function() {
         $("#exampleModal").modal("show");
         $("#exampleModalLabel").text("Thêm sản phẩm");
     });
-    $("#btn-close").on("click", function () {
+    $("#btn-close").on("click", function() {
         $("#exampleModal").modal("toggle");
     });
-    $("#btn-action").on("click", function () {
+    $("#btn-action").on("click", function() {
         // $("#exampleModal").modal("toggle");
     });
 
     //Xử lý nút thêm
-    $("#btn-add").on("click", function () {
+    $("#btn-add").on("click", function() {
         $("#btn-action")
             .off("click")
-            .on("click", function () {
+            .on("click", function() {
                 var newbookName = $("#book-name").val();
                 var newbookNXB = $("#nhaxuatban").val();
                 var newbookDesc = $("#book-description").val().trim();
@@ -42,14 +42,14 @@ $(document).ready(function () {
                 formData.append("bookCategory", newbookCategory);
                 formData.append("bookAuthor", newbookAuthor);
                 formData.append("bookAmount", newbookAmount);
-
+                //  hiển thị sau khi thêm thành công - cóp cái shtml bên category xong đổ ra như này ôk 
                 $.ajax({
                     url: "add_book",
                     type: "POST",
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function (data) {
+                    success: function(data) {
                         // console.log(data);
 
                         var xml = "<tr>";
@@ -83,7 +83,7 @@ $(document).ready(function () {
     });
 
     //Xử lý nút sửa
-    $(".btn-fix").on("click", function () {
+    $(".btn-fix").on("click", function() {
         var bookID = $(this).parent("td").siblings(".item_masach");
         var bookName = $(this).parent("td").siblings(".bookname");
         var bookNXB = $(this).parent("td").siblings(".nxb");
@@ -105,7 +105,7 @@ $(document).ready(function () {
 
         $("#btn-action")
             .off("click")
-            .on("click", function () {
+            .on("click", function() {
                 var currentbookID = bookID.val();
                 var newbookName = $("#book-name").val();
                 var newbookNXB = $("#nhaxuatban").val();
@@ -126,14 +126,14 @@ $(document).ready(function () {
                 formData.append("bookCategory", newbookCategory);
                 formData.append("bookAuthor", newbookAuthor);
                 formData.append("bookAmount", newbookAmount);
-
+                // dc roi 
                 $.ajax({
                     url: "/update_book",
                     type: "POST",
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function (data) {
+                    success: function(data) {
                         console.log(data);
 
                         bookName.text(data[0]["sTenSach"]);
@@ -147,7 +147,7 @@ $(document).ready(function () {
                         CloseModal();
                         $("#form-books")[0].reset();
                     },
-                    error: function (data) {
+                    error: function(data) {
                         console.log(data);
                     },
                 });
@@ -155,7 +155,7 @@ $(document).ready(function () {
     });
 
     //Xử lý nút xóa
-    $(".btn-del").off("click").on("click", function () {
+    $(".btn-del").off("click").on("click", function() {
         var row = $(this).parent("td").parent("tr");
         var bookID = $(this).parent("td").siblings(".item_masach");
         console.log("Nhấn");
@@ -169,7 +169,7 @@ $(document).ready(function () {
                 data: formData,
                 contentType: false,
                 processData: false,
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                 }
             });
@@ -184,9 +184,9 @@ $(document).ready(function () {
     $.ajax({
         url: "/getdanhmuc",
         dataType: "json",
-        success: function (data) {
+        success: function(data) {
             var optDanhMuc = "<option selected>---Chọn danh mục---</option>";
-            $.each(data, function (key, value) {
+            $.each(data, function(key, value) {
                 optDanhMuc += `<option value="${value["sMaDanhMuc"]}">${value["sTenDanhMuc"]}</option>`;
             });
             $("#book-category").append(optDanhMuc);

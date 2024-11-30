@@ -35,6 +35,9 @@ namespace QLTV.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("sTenDanhMuc");
 
+                    b.Property<string>("VerifyKey")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("SMaDanhMuc")
                         .HasName("PK__tblDanhM__7D62A86F8FCB4038");
 
@@ -43,12 +46,6 @@ namespace QLTV.Migrations
 
             modelBuilder.Entity("QLTV.Models.TblDanhSachMuon", b =>
                 {
-                    b.Property<string>("SMaDanhSach")
-                        .HasMaxLength(10)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(10)")
-                        .HasColumnName("sMaDanhSach");
-
                     b.Property<string>("SMaSach")
                         .HasMaxLength(10)
                         .IsUnicode(false)
@@ -61,8 +58,14 @@ namespace QLTV.Migrations
                         .HasColumnType("varchar(10)")
                         .HasColumnName("sMaTheMuon");
 
-                    b.HasKey("SMaDanhSach")
-                        .HasName("PK__tblDanhS__8DBFA015847F2667");
+                    b.Property<string>("SMaDanhSach")
+                        .HasMaxLength(10)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("sMaDanhSach");
+
+                    b.HasKey("SMaSach", "SMaTheMuon")
+                        .HasName("PK__tblDanhS__2C5E09B813667007");
 
                     b.HasIndex("SMaTheMuon");
 
@@ -72,9 +75,8 @@ namespace QLTV.Migrations
             modelBuilder.Entity("QLTV.Models.TblNguoiDung", b =>
                 {
                     b.Property<string>("SMaNguoiDung")
-                        .HasMaxLength(10)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(10)")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
                         .HasColumnName("sMaNguoiDung");
 
                     b.Property<DateTime?>("DNgaySinh")
@@ -104,7 +106,7 @@ namespace QLTV.Migrations
                         .HasColumnName("sTenNguoiDung");
 
                     b.HasKey("SMaNguoiDung")
-                        .HasName("PK__tblNguoi__47E09BE3C780583C");
+                        .HasName("PK_nguoidung");
 
                     b.HasIndex("SMaTheMuon");
 
@@ -205,9 +207,9 @@ namespace QLTV.Migrations
                         .HasColumnName("sTaiKhoan");
 
                     b.Property<string>("SMaNguoiDung")
-                        .HasMaxLength(10)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(10)")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
                         .HasColumnName("sMaNguoiDung");
 
                     b.Property<string>("SMaQuyen")
@@ -270,18 +272,19 @@ namespace QLTV.Migrations
 
             modelBuilder.Entity("QLTV.Models.TblDanhSachMuon", b =>
                 {
-                    b.HasOne("QLTV.Models.TblSach", "SMaDanhSachNavigation")
-                        .WithOne("TblDanhSachMuon")
-                        .HasForeignKey("QLTV.Models.TblDanhSachMuon", "SMaDanhSach")
+                    b.HasOne("QLTV.Models.TblSach", "SMaSachNavigation")
+                        .WithMany("TblDanhSachMuons")
+                        .HasForeignKey("SMaSach")
                         .IsRequired()
                         .HasConstraintName("FK__tblDanhSa__sMaDa__5629CD9C");
 
                     b.HasOne("QLTV.Models.TblTheMuon", "SMaTheMuonNavigation")
                         .WithMany("TblDanhSachMuons")
                         .HasForeignKey("SMaTheMuon")
+                        .IsRequired()
                         .HasConstraintName("FK__tblDanhSa__sMaTh__5535A963");
 
-                    b.Navigation("SMaDanhSachNavigation");
+                    b.Navigation("SMaSachNavigation");
 
                     b.Navigation("SMaTheMuonNavigation");
                 });
@@ -311,7 +314,8 @@ namespace QLTV.Migrations
                     b.HasOne("QLTV.Models.TblNguoiDung", "SMaNguoiDungNavigation")
                         .WithMany("TblTaiKhoans")
                         .HasForeignKey("SMaNguoiDung")
-                        .HasConstraintName("FK__tblTaiKho__sMaNg__59063A47");
+                        .IsRequired()
+                        .HasConstraintName("FK_taikhoan_nguoidung");
 
                     b.HasOne("QLTV.Models.TblQuyen", "SMaQuyenNavigation")
                         .WithMany("TblTaiKhoans")
@@ -340,7 +344,7 @@ namespace QLTV.Migrations
 
             modelBuilder.Entity("QLTV.Models.TblSach", b =>
                 {
-                    b.Navigation("TblDanhSachMuon");
+                    b.Navigation("TblDanhSachMuons");
                 });
 
             modelBuilder.Entity("QLTV.Models.TblTheMuon", b =>

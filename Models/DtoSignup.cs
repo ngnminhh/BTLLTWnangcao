@@ -10,7 +10,7 @@ namespace QLTV.Models
         [Required(ErrorMessage = "Mật khẩu không được để trống"), MaxLength(100)]
         public string? SMatKhau { get; set; } = "";
 
-        [Required(ErrorMessage = "CCCD không được để trống"), MaxLength(100)]
+        [Required(ErrorMessage = "CCCD không được để trống"), MaxLength(13)]
         public string? SCccd { get; set; }
 
         [Required(ErrorMessage = "Địa chỉ không được để trống"), MaxLength(100)]

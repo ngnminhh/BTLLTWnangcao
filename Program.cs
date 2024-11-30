@@ -12,6 +12,7 @@ builder.Services.AddDbContext<QLTVContext>(options =>
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
     options.UseSqlServer(connectionString);
 });
+//hết hạn cookie 5 p sẽ out //de trág  rro bị tấn công XSS 
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(5); // Thời gian hết hạn session
@@ -23,6 +24,7 @@ builder.Services.AddScoped<IAccountRepository, AccountRespository>();
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 
 var app = builder.Build();
+// Cấu hình các response headers bảo mật
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

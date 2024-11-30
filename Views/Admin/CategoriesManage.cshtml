@@ -1,0 +1,129 @@
+﻿@model DtoCategories
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    int index = 1;
+    var lstCategory = TempData["listCategory"];
+}
+<h1 class="text-center" style="min-width: 100%;">Quản lý danh mục</h1>
+@if (TempData["AddSuccess"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["AddSuccess"]
+    </div>
+}
+<div class="button-area" style="display: flex;justify-content: end;">
+    <button type="button" class="btn btn-success" id="btn-add">
+        <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
+    </button>
+</div>
+
+<div class="row justify-content-around">
+    @foreach(var item in(dynamic)(lstCategory)){
+        <div class="item_cate col-lg-4 col-sm-12 shadow p-3 mb-5 bg-white rounded">
+            <td class="id"><strong>Mã danh mục:</strong>@item.SMaDanhMuc</td><br>
+            <td class="tendm"><strong>Tên danh mục:</strong>@item.STenDanhMuc</td><br>
+            <td class="vkey"><strong>VerifyKey:</strong>@item.VerifyKey</td><br>
+             <td class="button-action">
+                    <button type="button" class="btn btn-primary btn-fix">
+                        <i class="fa-solid fa-wrench"
+                           style="color: #ffffff;"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-del">
+                        <i class="fa-solid fa-trash"
+                           style="color: #ffffff;"></i>
+                    </button>
+                </td>
+                <input type="hidden" name="SMaDanhMuc" value="@item.SMaDanhMuc" class="item_maDanhMuc">
+                <input type="hidden" name="STenDanhMuc" value="@item.STenDanhMuc" class="item_tenDanhMuc">
+                <input type="hidden" name="SMaDanhMuc" value="@item.VerifyKey" class="item_vkey">
+
+        </div>
+    }
+
+</div>
+
+@* <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Tên Danh Mục</th>
+            <th scope="col">Verify Key</th>
+            <th scope="col">Tác vụ</th>
+        </tr>
+    </thead>
+    <tbody id="list-category">
+        @foreach (var item in (dynamic)(lstCategory))
+        {
+            <tr>
+                <td class="id">@index</td>
+                <td class="tendm">@item.STenDanhMuc</td>
+                <td class="vkey">@item.VerifyKey</td>
+
+
+                <td class="button-action">
+                    <button type="button" class="btn btn-primary btn-fix">
+                        <i class="fa-solid fa-wrench"
+                           style="color: #ffffff;"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-del">
+                        <i class="fa-solid fa-trash"
+                           style="color: #ffffff;"></i>
+                    </button>
+                </td>
+                <input type="hidden" name="SMaDanhMuc" value="@item.SMaDanhMuc" class="item_maDanhMuc">
+            </tr>
+            {index+=1;}
+        }
+        
+        
+    </tbody>
+</table> *@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+            <form method="post" id="form-category" asp-action="AddCategory" asp-controller="Admin">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="SMaDanhMuc"> Mã danh mục</label>
+                        <input type="text" class="form-control" placeholder="Nhập mã danh mục" asp-for="SMaDanhMuc" id="SMaDanhMuc" >
+                        <span class="text-danger" asp-validation-for="SMaDanhMuc"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="STenDanhMuc"> Tên danh mục</label>
+                        <input type="text" class="form-control" placeholder="Nhập tên danh mục" asp-for="STenDanhMuc" id="STenDanhMuc">
+                        <span class="text-danger" asp-validation-for="STenDanhMuc"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="VerifyKey"> Verify Key</label>
+                        <input type="text" class="form-control" placeholder="Nhập Verify Key" asp-for="VerifyKey" id="VerifyKey">
+                        <span class="text-danger" asp-validation-for="VerifyKey"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="btn-close"
+                                data-dismiss="modal">
+                            Đóng
+                        </button>
+                        <button type="text" class="btn btn-primary" id="btn-action">Thực hiện</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/CategoriesManage.js" asp-append-version="true"></script> 

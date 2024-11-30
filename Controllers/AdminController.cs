@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using QLTV.Models;
 using QLTV.Repository;
+using System.Security.Principal;
 
 namespace QLTV.Controllers
 {
@@ -165,27 +167,27 @@ namespace QLTV.Controllers
             user.SCccd = cccd;
             user.SDiaChi = diachi;
             user.DNgaySinh = DateTime.Parse(ngaysinh.ToString());
-            var account=context.TblTaiKhoans.FirstOrDefault(a => a.STaiKhoan.Equals(taikhoan));
+            var account = context.TblTaiKhoans.FirstOrDefault(a => a.STaiKhoan.Equals(taikhoan));
             account.SMatKhau = matkhau;
 
             context.TblNguoiDungs.Update(user);
             context.TblTaiKhoans.Update(account);
             context.SaveChanges();
 
-            return Json(new { succes = true, message="Cập nhật người dùng thành công",taikhoan=taikhoan,matkhau=matkhau,cccd=cccd,diachi=diachi,ngaysinh=ngaysinh });
+            return Json(new { succes = true, message = "Cập nhật người dùng thành công", taikhoan = taikhoan, matkhau = matkhau, cccd = cccd, diachi = diachi, ngaysinh = ngaysinh });
         }
 
         [Route("del_account")]
         [HttpPost]
-        public JsonResult DeleteAccount(IFormCollection form){
-            var taikhoan=form["STaiKhoan"];
-            TblTaiKhoan delTk=context.TblTaiKhoans.FirstOrDefault(s=>s.STaiKhoan.Equals(taikhoan));
-            TblNguoiDung delNd=context.TblNguoiDungs.FirstOrDefault(s=>s.SMaNguoiDung.Equals(taikhoan));
+        public JsonResult DeleteAccount(IFormCollection form) {
+            var taikhoan = form["STaiKhoan"];
+            TblTaiKhoan delTk = context.TblTaiKhoans.FirstOrDefault(s => s.STaiKhoan.Equals(taikhoan));
+            TblNguoiDung delNd = context.TblNguoiDungs.FirstOrDefault(s => s.SMaNguoiDung.Equals(taikhoan));
 
             context.TblTaiKhoans.Remove(delTk);
             context.TblNguoiDungs.Remove(delNd);
             context.SaveChanges();
-            return Json(new{success=true,data=taikhoan});
+            return Json(new { success = true, data = taikhoan });
         }
         [Route("cart_manage")]
         public IActionResult Cart()
@@ -193,5 +195,189 @@ namespace QLTV.Controllers
             ViewData["Title"] = "Quản lý thẻ mượn";
             return View();
         }
+
+        [Route("category_manage")]
+        public IActionResult Category()
+        {
+            ViewData["Title"] = "Quản lý danh mục";
+            var currentAccount = HttpContext.Session.GetString("CurrentAccount");
+            if (currentAccount != null)
+            {
+                ViewData["CurrentAccount"] = currentAccount;
+                ViewData["Quyen"] = HttpContext.Session.GetString("Quyen");
+            }
+            var listCategory = context.TblDanhMucs.ToList();
+            TempData["listCategory"] = listCategory;
+            //    return Json(listCategory); checked xem load dc dbb chưa
+            return View("CategoriesManage");
+        }
+        //
+        //  thêm route cho cả add với update như account
+        [Route("add_Category")]
+        [HttpPost]
+        public IActionResult AddCategory(DtoCategories dtoCategories)
+        {
+            /*return Json(dtoCategories); khi db dã them dc */
+            if (!ModelState.IsValid)
+            {
+                return View("CategoriesManage", dtoCategories);
+            }
+            TblDanhMuc newDM = new TblDanhMuc()
+            {
+                SMaDanhMuc = dtoCategories.SMaDanhMuc,
+                STenDanhMuc = dtoCategories.STenDanhMuc,
+                VerifyKey= dtoCategories.VerifyKey,
+            };
+            context.TblDanhMucs.Add(newDM);
+            context.SaveChanges();
+            return RedirectToAction("Category", "Admin");
+
+        }
+        
+        //public JsonResult AddCategory(IFormCollection form)
+        //{
+            
+        //    var id = form["id"];
+        //    var tendm = form["tendm"];
+           
+
+        //    TblDanhMuc newDM = new TblDanhMuc()
+        //    {
+        //        SMaDanhMuc = id,
+        //        STenDanhMuc = tendm,
+               
+        //    };
+        //    context.TblDanhMucs.Add(newDM);
+        //    context.SaveChanges();
+        //    return Json(new { success = true, data = newDM }); 
+        //}
+
+
+
+        
+
+        [Route("update_Category")]
+        [HttpPost]
+
+        public IActionResult UpdateCategory(IFormCollection form)
+        {
+            ViewData["Title"] = "Quản lý danh mục";
+
+            // Kiểm tra dữ liệu đầu vào
+            var id = form["id"].ToString().Trim();
+            var tendm = form["tendm"].ToString().Trim();
+            var vkey = form["vkey"].ToString().Trim();
+
+
+            if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(tendm))
+            {
+                return Json(new { success = false, message = "Dữ liệu không hợp lệ" });
+            }
+
+            // Tìm danh mục cần cập nhật
+            var category = context.TblDanhMucs.FirstOrDefault(e => e.SMaDanhMuc == id);
+            if (category == null)
+            {
+                // Trả về nếu không tìm thấy danh mục
+                return Json(new { success = false, message = "Danh mục không tồn tại" });
+            }
+
+            // Cập nhật thông tin danh mục
+            category.STenDanhMuc = tendm;
+            category.VerifyKey = vkey;
+
+            // Lưu thay đổi vào cơ sở dữ liệu
+            context.SaveChanges();
+
+            // Trả về kết quả thành công
+            return Json(new
+            {
+                success = true,
+                message = "Cập nhật danh mục thành công",
+                data = new
+                {
+                    sMaDanhMuc = category.SMaDanhMuc,
+                    sTenDanhMuc = category.STenDanhMuc,
+                    verifyKey=category.VerifyKey
+                }
+            });
+        }
+        //public JsonResult UpdateCategory(IFormCollection form)
+        //{
+        //    var lstDM = iadmin.UpdateDM(form);
+
+        //    //context.SaveChanges();
+        //    return Json(lstDM);
+
+
+        //}
+        
+        // public IActionResult updateCategory(IFormCollection form)
+        // {
+        //     ViewData["Title"] = "Quản lý danh mục";
+        //     if (!ModelState.IsValid)
+        //     {
+        //         return Json(new { success = false, message = "Dữ liệu không hợp lệ" });
+        //     }
+        //     var id = form["id"];
+        //     var tendm = form["tendm"];
+
+
+        //     var CategoryUpdate = context.TblDanhMucs.FirstOrDefault(e => e.SMaDanhMuc.Equals(id));
+        //     if (CategoryUpdate != null)
+        //     {
+        //         CategoryUpdate.STenDanhMuc = tendm;
+
+        //         // Cập nhật vào cơ sở dữ liệu
+        //         context.TblDanhMucs.Update(CategoryUpdate);
+        //         context.SaveChanges();
+
+        //         // Trả về kết quả thành công
+        //         return Json(new { success = true, message = "Cập nhật danh mục thành công", id = id, tendm = tendm });
+        //     }
+        //     else
+        //     {
+        //         // Trường hợp không tìm thấy danh mục
+        //         return Json(new { success = false, message = "Danh mục không tồn tại" });
+        //     }
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        [Route("del_Category")]
+        [HttpPost]
+        public IActionResult DeleteCategory(IFormCollection form)
+        {
+            var maDanhMuc = form["SMaDanhMuc"];
+            var delDm = context.TblDanhMucs.FirstOrDefault(e => e.SMaDanhMuc.Equals(maDanhMuc));
+
+            if (delDm != null)
+            {
+                context.TblDanhMucs.Remove(delDm);
+                context.SaveChanges();
+                return Json(new { success = true, message = "Đã xóa danh mục" }); // Trả về JSON hợp lệ
+            }
+            else
+            {
+                return Json(new { success = false, message = "Không tìm thấy danh mục" }); // Trả về JSON hợp lệ
+            }
+        }
+
+
+
     }
 }
+    
